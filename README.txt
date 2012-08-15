@@ -1,0 +1,1 @@
+﻿Le jeu de la communauté CommunityCraft est OpenSource, et tout le monde peut donner son avis ici, ou sur le site.
