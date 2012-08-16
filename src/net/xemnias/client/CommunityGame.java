@@ -1,5 +1,7 @@
 package net.xemnias.client;
 
+import java.io.IOException;
+
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
@@ -21,22 +23,28 @@ public class CommunityGame extends StateBasedGame
 	}
 
 
-	private void initGame(GameContainer arg0) throws SlickException
+	private void initGame(GameContainer arg0) throws SlickException, IOException
 	{
 		currentScreen = new Screen(this);
 		currentScreen.currentstate = new ScreenTest(this);
 		
-		world = new Map("Test", this);
+		world = new Map("test.map", this);
 		loader = new RessourceLoader();
 		loader.bindImageDirectoryToList("data/tiles/");
 		world.load();
+		world.buildMap();
 		render = new RenderEngine(this);
 	}
 	
 	
 	public void initStatesList(GameContainer arg0) throws SlickException 
 	{
-		initGame(arg0);
+		try {
+			initGame(arg0);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		addState(currentScreen);
 		getState(0).init(arg0, this);

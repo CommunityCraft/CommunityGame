@@ -22,9 +22,6 @@ public class Tile
 		if(skin != null)
 			skin.draw(xPos, yPos);
 	}
-	
-	
-	
 
 	public float getxPos() {
 		return xPos;
