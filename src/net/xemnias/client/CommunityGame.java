@@ -8,56 +8,41 @@ import org.newdawn.slick.state.StateBasedGame;
 public class CommunityGame extends StateBasedGame
 {
 	private static int height, width;
-	
 	private Screen currentScreen;
-	
 	public RenderEngine render;
-	
 	public Map world;
-	
 	public RessourceLoader loader;
 	
 	public CommunityGame(String name, int i, int j) throws SlickException 
 	{
 		super(name);
-		
 		width = i;
 		height = j;
-
-		
 	}
 
-	public void initStatesList(GameContainer arg0) throws SlickException 
+
+	private void initGame(GameContainer arg0) throws SlickException
 	{
-		
-		
 		currentScreen = new Screen(this);
 		currentScreen.currentstate = new ScreenTest(this);
-		
-		
 		
 		world = new Map("Test", this);
 		loader = new RessourceLoader();
 		loader.bindImageDirectoryToList("data/tiles/");
 		world.load();
 		render = new RenderEngine(this);
-		
-		addState(currentScreen);
-		
-		this.getState(0).init(arg0, this);
-		enterState(0);
-
 	}
 	
-	public static void main(String[] args) throws SlickException
+	
+	public void initStatesList(GameContainer arg0) throws SlickException 
 	{
-		CommunityGame game = new CommunityGame("CommunityGame - alpha", 1080, 580);
-		AppGameContainer app = new AppGameContainer(game);
-		app.setDisplayMode(width, height, false);
-		app.start();
+		initGame(arg0);
 		
+		addState(currentScreen);
+		getState(0).init(arg0, this);
+		enterState(0);
 	}
-
+	
 	/**
 	 * Affiche une boite de dialogue 
 	 * @param g
@@ -93,8 +78,15 @@ public class CommunityGame extends StateBasedGame
 			}
 		}
 	}
-	
 
+	public static void main(String[] args) throws SlickException
+	{
+		CommunityGame game = new CommunityGame("CommunityGame - alpha", 1080, 580);
+		AppGameContainer app = new AppGameContainer(game);
+		app.setDisplayMode(width, height, false);
+		app.start();
+	}
+	
 	public static int getHeight() {
 		return height;
 	}
