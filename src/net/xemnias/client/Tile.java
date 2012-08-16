@@ -19,7 +19,8 @@ public class Tile
 	
 	public void render(GameContainer gc, Graphics g)
 	{
-		skin.draw(xPos, yPos);
+		if(skin != null)
+			skin.draw(xPos, yPos);
 	}
 	
 	

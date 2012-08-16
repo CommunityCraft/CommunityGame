@@ -13,22 +13,37 @@ public class CommunityGame extends StateBasedGame
 	
 	public RenderEngine render;
 	
-	Map map;
+	public Map world;
+	
+	public RessourceLoader loader;
+	
 	public CommunityGame(String name, int i, int j) throws SlickException 
 	{
 		super(name);
 		
-		currentScreen = new Screen(this);
-		currentScreen.currentstate = new ScreenTest(this);
-
-		addState(currentScreen);
-		
 		width = i;
 		height = j;
+
+		
 	}
 
 	public void initStatesList(GameContainer arg0) throws SlickException 
 	{
+		
+		
+		currentScreen = new Screen(this);
+		currentScreen.currentstate = new ScreenTest(this);
+		
+		
+		
+		world = new Map("Test", this);
+		loader = new RessourceLoader();
+		loader.bindImageDirectoryToList("data/tiles/");
+		world.load();
+		render = new RenderEngine(this);
+		
+		addState(currentScreen);
+		
 		this.getState(0).init(arg0, this);
 		enterState(0);
 

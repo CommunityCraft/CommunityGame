@@ -25,6 +25,23 @@ public class ScreenTest extends Screen
 	{
 		super.update(gc, delta, cc);
 		
+		if(gc.getInput().isKeyDown(Input.KEY_Z))
+		{
+			cc.render.getCamera().setyPos(cc.render.getCamera().getyPos()-1);
+		}
+		if(gc.getInput().isKeyDown(Input.KEY_S))
+		{
+			cc.render.getCamera().setyPos(cc.render.getCamera().getyPos()+1);
+		}
+		if(gc.getInput().isKeyDown(Input.KEY_Q))
+		{
+			cc.render.getCamera().setxPos(cc.render.getCamera().getxPos()-1);
+		}
+		if(gc.getInput().isKeyDown(Input.KEY_D))
+		{
+			cc.render.getCamera().setxPos(cc.render.getCamera().getxPos()+1);
+		}
+		
 		
 		if(gc.getInput().isKeyPressed(Input.KEY_E))
 			cc.showOrHideDialog(test);
@@ -33,6 +50,7 @@ public class ScreenTest extends Screen
 	public void render(GameContainer gc, Graphics g, CommunityGame cc) 
 	{
 		super.render(gc, g, cc);
+		cc.render.renderView(g);
 	}
 	
 }

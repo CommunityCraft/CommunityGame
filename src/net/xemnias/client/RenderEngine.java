@@ -11,12 +11,10 @@ public class RenderEngine
 	private ArrayList<Tile> tiles = new ArrayList<Tile>();
 	private View camera;
 	
-	Graphics g;
-	public RenderEngine(Map map, Graphics graphics)
+	public RenderEngine(CommunityGame cc)
 	{
-		tiles = map.tiles;
+		tiles = cc.world.tiles;
 		camera = new View(this);
-		g = graphics;
 	}
 	
 	public void renderView(Graphics g)

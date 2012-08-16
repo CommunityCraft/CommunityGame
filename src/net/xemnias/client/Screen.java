@@ -22,11 +22,13 @@ public class Screen extends BasicGameState
 
 	public void init(GameContainer arg0, StateBasedGame arg1) throws SlickException
 	{
+		parent.loader.bindImageDirectoryToList("data/tiles");
 		currentstate.preLoad(arg0, parent);
 	}
 
 	public void render(GameContainer arg0, StateBasedGame arg1, Graphics arg2) throws SlickException
 	{
+		parent.render.renderTiles(arg0, arg2);
 		currentstate.render(arg0, arg2, parent);
 		if(isDialogOpen)
 			dialog.render(arg0,parent, arg2);
