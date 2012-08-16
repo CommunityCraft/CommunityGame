@@ -30,7 +30,12 @@ public class GuiButton extends GuiCompoment
 	
 	protected void render(GameContainer gc, CommunityGame cc, Graphics g)
 	{
-		drawTexturalQuad(g, cc.loader.getImageByName("gui.png"),0,0,400,40, x, y);
+		int i = 0;
+		if(isMouseOnIt(gc.getInput()))
+			i+=40;
+		drawTexturalQuad(g, cc.loader.getImageByName("gui.png"),0,i,400,40, x, y);
+		
+
 	}
 
 	protected void init(GameContainer gc, CommunityGame sbg)

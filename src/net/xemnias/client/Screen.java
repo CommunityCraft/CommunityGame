@@ -39,6 +39,7 @@ public class Screen extends BasicGameState
 	public void update(GameContainer arg0, StateBasedGame arg1, int arg2) throws SlickException
 	{
 		currentstate.update(arg0, arg2, parent);
+		System.out.println(arg2);
 		if(isDialogOpen)
 		{
 			dialog.update(arg0,parent,arg2);

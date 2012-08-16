@@ -16,6 +16,8 @@ public class Map
 	private String Name;
 	private String pathToDirectory;
 	
+	private FileReader reader;
+	
 	private int[][] map;
 	private StringBuilder str;
 	
@@ -60,7 +62,7 @@ public class Map
 		File fmap = new File(pathToDirectory+Name);
 		try 
 		{
-			FileReader reader = new FileReader(fmap);
+			reader = new FileReader(fmap);
 			
 	         for(int i = 0; i < 19; i++)
 	         {

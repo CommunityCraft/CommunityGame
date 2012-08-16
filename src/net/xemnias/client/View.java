@@ -12,8 +12,8 @@ public class View
 		//this.render = render;
 		xPos = 150;
 		yPos = 80;
-		width = 64+24;
-		height = 64+24;
+		width = 512;
+		height = 380;
 	}
 
 	public boolean isOnScreen(Tile tile)

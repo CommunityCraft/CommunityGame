@@ -42,7 +42,6 @@ public class CommunityGame extends StateBasedGame
 		try {
 			initGame(arg0);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
