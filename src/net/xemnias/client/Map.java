@@ -12,8 +12,6 @@ public class Map
 	public Map(String name, CommunityGame parent) throws SlickException
 	{
 		cc = parent;
-
-		
 	}
 	
 	public void load() throws SlickException
@@ -22,8 +20,8 @@ public class Map
 		{
 			for(int i = 0; i < 34; i++)
 			{
-					tiles.add(i, new Tile(i*32, y*32,32,32));
-					tiles.get(i).bindTexture(cc.loader.getImageByName("grass.png"));
+				tiles.add(i, new Tile(i*32, y*32,32,32));
+				tiles.get(i).bindTexture(cc.loader.getImageByName("grass.png"));
 			}
 		}
 	}

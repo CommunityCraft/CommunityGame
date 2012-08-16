@@ -79,6 +79,12 @@ public class CommunityGame extends StateBasedGame
 		}
 	}
 
+	public void closeOpenDialog()
+	{
+		currentScreen.isDialogOpen = false;
+	}
+	
+
 	public static void main(String[] args) throws SlickException
 	{
 		CommunityGame game = new CommunityGame("CommunityGame - alpha", 1080, 580);
@@ -102,5 +108,5 @@ public class CommunityGame extends StateBasedGame
 	public static void setWidth(int width) {
 		CommunityGame.width = width;
 	}
-	
+
 }

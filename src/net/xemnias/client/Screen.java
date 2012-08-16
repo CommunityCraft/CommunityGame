@@ -22,7 +22,6 @@ public class Screen extends BasicGameState
 
 	public void init(GameContainer arg0, StateBasedGame arg1) throws SlickException
 	{
-		parent.loader.bindImageDirectoryToList("data/tiles");
 		currentstate.preLoad(arg0, parent);
 	}
 

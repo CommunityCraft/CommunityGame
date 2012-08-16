@@ -33,10 +33,7 @@ public class GuiDialogTest extends GuiDialog
 	{
 		if(id == 0)
 		{
-			System.out.println("ok");
+			cc.closeOpenDialog();
 		}
 	}
-	
-	
-
 }
