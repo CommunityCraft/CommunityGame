@@ -64,6 +64,8 @@ public abstract class GuiContainer extends GuiDialog
 			{
 				if(slot.getItem() != null)
 				{
+					g.setColor(new Color(0,0,0,0.5f));
+					g.fillRect(mouseX+2, mouseY - g.getFont().getHeight(slot.getItem().Name) -2, g.getFont().getWidth(slot.getItem().Name)+6, g.getFont().getHeight(slot.getItem().Name)+6);
 					g.setColor(Color.white);
 					g.drawString(slot.getItem().Name, mouseX+ 5, mouseY- g.getFont().getHeight(slot.getItem().Name));
 				}

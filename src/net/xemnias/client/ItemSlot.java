@@ -25,10 +25,7 @@ public class ItemSlot extends GuiCompoment
 
 	public void update(GameContainer gc, CommunityGame cc, int delta) 
 	{
-		if(mouseOnSlot(gc.getInput() )&& gc.getInput().isMousePressed(0))
-		{
-			
-		}
+		
 	}
 	
 	public void render(GameContainer gc, CommunityGame cc, Graphics g) 

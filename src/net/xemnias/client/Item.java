@@ -47,4 +47,12 @@ public class Item
 	public void setCoordinateX(int coordinateX) {
 		this.coordinateX = coordinateX;
 	}
+
+	public Image getSkin() {
+		return skin;
+	}
+
+	public void setSkin(Image skin) {
+		this.skin = skin;
+	}
 }
