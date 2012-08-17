@@ -17,6 +17,7 @@ public class GuiInventory extends GuiContainer
 		}
 		
 		slots.get(20).setItem(new Item(0,0,0,"Test", cc));
+		slots.get(19).setItem(new Item(1,32,0,"Test2", cc));
 	}
 	
 	public void init(GameContainer gc, CommunityGame sbg)
@@ -44,5 +45,6 @@ public class GuiInventory extends GuiContainer
 			if(slots.get(i).isItemOnMouse())
 				slots.get(i).render(gc, sbg, g);
 		}
+		drawItemName(gc, g);
 	}
 }

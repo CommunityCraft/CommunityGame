@@ -2,7 +2,9 @@ package net.xemnias.client;
 
 import java.util.ArrayList;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
 
 public abstract class GuiContainer extends GuiDialog 
 {
@@ -51,4 +53,21 @@ public abstract class GuiContainer extends GuiDialog
 		}
 	}
 	
+	public void drawItemName(GameContainer gc, Graphics g)
+	{
+		int mouseX = gc.getInput().getMouseX();
+		int mouseY = gc.getInput().getMouseY();
+		for(int i = 0; i < slots.size(); i++)
+		{
+			ItemSlot slot = slots.get(i);
+			if(mouseX > slot.getX() && mouseX < slot.getX() + slot.getWidth() && mouseY > slot.getY() && mouseY < slot.getY() + slot.getHeight())
+			{
+				if(slot.getItem() != null)
+				{
+					g.setColor(Color.white);
+					g.drawString(slot.getItem().Name, mouseX+ 5, mouseY- g.getFont().getHeight(slot.getItem().Name));
+				}
+			}
+		}
+	}
 }
