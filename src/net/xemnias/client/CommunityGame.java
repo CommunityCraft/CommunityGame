@@ -25,12 +25,12 @@ public class CommunityGame extends StateBasedGame
 
 	private void initGame(GameContainer arg0) throws SlickException, IOException
 	{
+		loader = new RessourceLoader();
+		loader.bindImageDirectoryToList("data/tiles/");
 		currentScreen = new Screen(this);
 		currentScreen.currentstate = new ScreenTest(this);
 		
 		world = new Map("test.map", this);
-		loader = new RessourceLoader();
-		loader.bindImageDirectoryToList("data/tiles/");
 		world.load();
 		world.buildMap();
 		render = new RenderEngine(this);

@@ -7,12 +7,12 @@ import org.newdawn.slick.Input;
 public class ScreenTest extends Screen 
 {
 	
-	private GuiDialogTest test;
+	private GuiInventory test;
 	
 	public ScreenTest(CommunityGame communityGame)
 	{
 		super(communityGame);
-		test = new GuiDialogTest();
+		test = new GuiInventory(communityGame);
 		
 	}
 
