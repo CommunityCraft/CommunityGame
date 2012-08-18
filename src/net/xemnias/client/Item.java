@@ -12,35 +12,36 @@ public class Item
 	private Image skin;
 	public String Name;
 	public int id;
-	private ArrayList<Object> ids = new ArrayList<Object>();
+	private ArrayList<Item> items = new ArrayList<Item>();
+	SpriteSheet itemSheet;
+	
 	
 	public Item(int i, int xCoor, int yCoor, String name)
 	{
+		itemSheet = new SpriteSheet(32, 32, CommunityGame.loader.getImageByName("item2.png"));
 		setCoordinateX(xCoor);
 		setCoordinateY(yCoor);
 		id = i;
 		Name = name;
-		skin = CommunityGame.loader.getImageByName("item.png").getSubImage(xCoor, yCoor, 32, 32);
+		skin = itemSheet.getSpriteAt(xCoor, yCoor);
 
 		
-		if(ids.contains(id))
+		
+		for(int z = 0; z < items.size(); z++)
 		{
-			System.err.println("ID déjà utilisé : "+id);
-			System.exit(0);
+			if(i == items.get(z).id)
+			{
+				System.err.println("ID item similaire : "+i);
+				System.exit(0);
+			}
 		}
-		else
-		{
-			ids.add(id);
-		}
+		items.add(this);
 	}
 	
-	
+	public static final Item item = new Item(-1,0,0,"null");
 	public static final ItemIronSword ironSword = new ItemIronSword(0, 0, 0, "Épée en fer");
-	public static final ItemRedSword redSword = new ItemRedSword(1, 32, 0, "Épée rouge");
-	
-	
-	
-	
+	public static final ItemIronHammer ironHammer = new ItemIronHammer(1, 1, 0, "Marteau en fer");
+	public static final ItemLittleKey key = new ItemLittleKey(2, 2, 0, "Petite clé");
 	
 	
 	
@@ -52,7 +53,7 @@ public class Item
 	
 	public void setCoor(int x, int y)
 	{
-		skin = CommunityGame.loader.getImageByName("item.png").getSubImage(x, y, 32, 32);
+		skin = itemSheet.getSpriteAt(x, y);
 	}
 
 	public int getCoordinateY() {
@@ -77,5 +78,10 @@ public class Item
 
 	public void setSkin(Image skin) {
 		this.skin = skin;
+	}
+	
+	public void getInitializeMessage()
+	{
+		System.out.println("Item ok");
 	}
 }
