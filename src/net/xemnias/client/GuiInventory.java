@@ -17,8 +17,8 @@ public class GuiInventory extends GuiContainer
 			}
 		}
 		
-		slots.get(20).setItem(new Item(0,0,0,"Test", cc));
-		slots.get(19).setItem(new Item(1,32,0,"Test2", cc));
+		slots.get(5).setItem(Item.ironSword);
+		slots.get(6).setItem(Item.redSword);
 	}
 	
 	public void init(GameContainer gc, CommunityGame sbg)

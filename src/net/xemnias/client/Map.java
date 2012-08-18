@@ -12,7 +12,6 @@ import org.newdawn.slick.SlickException;
 public class Map
 {
 	public ArrayList<Tile> tiles = new ArrayList<Tile>();
-	private CommunityGame cc;
 	private String Name;
 	private String pathToDirectory;
 	
@@ -23,7 +22,6 @@ public class Map
 	
 	public Map(String name, CommunityGame parent) throws SlickException
 	{
-		cc = parent;
 		Name = name;
 		pathToDirectory = "data/map/";
 		map = new int[19][34];
@@ -45,13 +43,13 @@ public class Map
       			 if(tile == '0')
       			 {
       				 tiles.add(i, new Tile(o*32, i*32, 32, 32));
-      				 tiles.get(i).bindTexture(cc.loader.getImageByName("water.png"));
+      				 tiles.get(i).bindTexture(CommunityGame.loader.getImageByName("water.png"));
       			 }
       			 
       			 if(tile == '1')
       			 {
       				 tiles.add(i, new Tile(o*32, i*32, 32, 32));
-      				 tiles.get(i).bindTexture(cc.loader.getImageByName("grass.png"));
+      				 tiles.get(i).bindTexture(CommunityGame.loader.getImageByName("grass.png"));
       			 }
       		 }
         }
