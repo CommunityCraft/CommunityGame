@@ -1,5 +1,6 @@
 package net.xemnias.client;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 
@@ -35,6 +36,14 @@ public class GuiInventory extends GuiContainer
 
 	public void render(GameContainer gc, CommunityGame sbg, Graphics g) 
 	{
+
+		fillRectWithColor(g, 250, 240, 270, 150, Color.gray);
+		drawRectWithColor(g, 250, 240, 270, 150, Color.black);
+		fillRectWithColor(g, 330, 100, 100, 150, Color.gray);
+		drawRectWithColor(g, 330, 100, 100, 140, Color.black);
+		drawRectWithColor(g, 340, 110, 80, 120, Color.black);
+		fillRectWithColor(g, 345, 115, 70, 110, Color.darkGray);
+		
 		for(int i = 0; i < slots.size(); i++)
 		{
 			if(!slots.get(i).isItemOnMouse())

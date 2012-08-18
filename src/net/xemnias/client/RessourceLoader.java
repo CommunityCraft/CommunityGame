@@ -47,4 +47,14 @@ public class RessourceLoader
 		}
 		return null;
 	}
+	
+	public Image getSpriteWithSheet(String sheetName, int id, int id2)
+	{
+		for(int i = 0; i < imageList.size(); i++)
+		{
+			if(imageList.get(i).getName().equalsIgnoreCase(sheetName))
+				return imageList.get(i).getSubImage(id*32, id2*32, 32, 32);
+		}
+		return null;
+	}
 }
