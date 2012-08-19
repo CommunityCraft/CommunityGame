@@ -17,6 +17,15 @@ public class GuiInventory extends GuiContainer
 			}
 		}
 		
+		int z = 0;
+		
+		for(int i = 21; i <28; i++)
+		{
+			slots.add(i, new ItemSlot((270) + z*32, 398));
+			slots.get(i).equipedSlot = true;
+			z++;
+		}
+		
 		slots.get(5).setItem(Item.ironSword);
 		slots.get(6).setItem(Item.ironHammer);
 		slots.get(7).setItem(Item.key);
@@ -55,6 +64,7 @@ public class GuiInventory extends GuiContainer
 			if(slots.get(i).isItemOnMouse())
 				slots.get(i).render(gc, sbg, g);
 		}
+		
 		drawItemName(gc, g);
 	}
 }

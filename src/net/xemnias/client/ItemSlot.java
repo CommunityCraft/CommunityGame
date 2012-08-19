@@ -9,6 +9,7 @@ public class ItemSlot extends GuiCompoment
 {
 	private Item item;
 	private boolean itemOnMouse = false;
+	public boolean equipedSlot = false;
 	
 	public ItemSlot(float i, float j)
 	{

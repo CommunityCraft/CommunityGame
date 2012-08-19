@@ -38,7 +38,6 @@ public class Item
 		items.add(this);
 	}
 	
-	public static final Item item = new Item(-1,0,0,"null");
 	public static final ItemIronSword ironSword = new ItemIronSword(0, 0, 0, "Épée en fer");
 	public static final ItemIronHammer ironHammer = new ItemIronHammer(1, 1, 0, "Marteau en fer");
 	public static final ItemLittleKey key = new ItemLittleKey(2, 2, 0, "Petite clé");
