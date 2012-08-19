@@ -1,11 +1,16 @@
 package net.xemnias.client;
 
+import java.util.ArrayList;
+
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 
 public class GuiInventory extends GuiContainer
 {
+	private int selectedCase;
+	private ArrayList<ItemSlot> equipeSlots = new ArrayList<ItemSlot>();
+	public Item equipedItem;
 	
 	public GuiInventory(CommunityGame cc)
 	{
@@ -25,6 +30,15 @@ public class GuiInventory extends GuiContainer
 			slots.get(i).equipedSlot = true;
 			z++;
 		}
+		z=0;
+		for(int i = 0; i < slots.size(); i++)
+		{
+			if(slots.get(i).equipedSlot)
+			{
+				equipeSlots.add(z, slots.get(i));
+				z++;
+			}
+		}
 		
 		slots.get(5).setItem(Item.ironSword);
 		slots.get(6).setItem(Item.ironHammer);
@@ -42,6 +56,18 @@ public class GuiInventory extends GuiContainer
 		{
 			clickOnCase(whatCaseClick(gc));
 		}
+		
+		if(gc.getInput().isMousePressed(1))
+		{
+			if(selectedCase < 6)
+				selectedCase++;
+			else
+				selectedCase =0;
+		}
+		
+		equipedItem = equipeSlots.get(selectedCase).getItem();
+		if(equipedItem != null)
+		System.out.println(equipedItem.Name);
 	}
 
 	public void render(GameContainer gc, CommunityGame sbg, Graphics g) 
@@ -64,6 +90,8 @@ public class GuiInventory extends GuiContainer
 			if(slots.get(i).isItemOnMouse())
 				slots.get(i).render(gc, sbg, g);
 		}
+		
+		g.drawImage(CommunityGame.loader.getImageByName("gui.png").getSubImage(400, 0, 35, 35),(270) + selectedCase*32 -1, 397);
 		
 		drawItemName(gc, g);
 	}
