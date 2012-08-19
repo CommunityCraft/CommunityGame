@@ -49,7 +49,7 @@ public class Map
       			 if(tile == '1')
       			 {
       				 tiles.add(i, new Tile(o*32, i*32, 32, 32));
-      				 tiles.get(i).bindTexture(CommunityGame.loader.getTextureById(0));
+      				 tiles.get(i).bindTexture(CommunityGame.loader.getTextureById(1));
       			 }
       		 }
         }
