@@ -18,13 +18,11 @@ public class ScreenTest extends Screen
 
 	public void preLoad(GameContainer gc, CommunityGame cc)
 	{
-		super.preLoad(gc, cc);
+		
 	}
 
 	public void update(GameContainer gc, int delta, CommunityGame cc)
-	{
-		super.update(gc, delta, cc);
-		
+	{		
 		if(gc.getInput().isKeyDown(Input.KEY_Z))
 		{
 			cc.render.getCamera().setyPos(cc.render.getCamera().getyPos()-1);
@@ -49,8 +47,7 @@ public class ScreenTest extends Screen
 
 	public void render(GameContainer gc, Graphics g, CommunityGame cc) 
 	{
-		super.render(gc, g, cc);
-		cc.render.renderView(g);
+		
 	}
 	
 }
