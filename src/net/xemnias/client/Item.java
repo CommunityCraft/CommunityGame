@@ -1,7 +1,5 @@
 package net.xemnias.client;
 
-import java.util.ArrayList;
-
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
@@ -12,7 +10,6 @@ public class Item
 	private Image skin;
 	public String Name;
 	public int id;
-	private ArrayList<Item> items = new ArrayList<Item>();
 	SpriteSheet itemSheet;
 	
 	
@@ -27,22 +24,31 @@ public class Item
 
 		
 		
-		for(int z = 0; z < items.size(); z++)
+		for(int z = 0; z < CommunityGame.itemList.size(); z++)
 		{
-			if(i == items.get(z).id)
+			if(i == CommunityGame.itemList.get(z).id)
 			{
 				System.err.println("ID item similaire : "+i);
 				System.exit(0);
 			}
 		}
-		items.add(this);
+		CommunityGame.itemList.add(this);
 	}
 	
 	public static final ItemIronSword ironSword = new ItemIronSword(0, 0, 0, "Épée en fer");
 	public static final ItemIronHammer ironHammer = new ItemIronHammer(1, 1, 0, "Marteau en fer");
 	public static final ItemLittleKey key = new ItemLittleKey(2, 2, 0, "Petite clé");
 	
-	
+
+	public Item getItemById(int id)
+	{
+		for(int i = 0; i < CommunityGame.itemList.size(); i++)
+		{
+			if(CommunityGame.itemList.get(i).id == id)
+				return CommunityGame.itemList.get(i);
+		}
+		return null;
+	}
 	
 	
 	public void drawAsIcon(float x, float y, Graphics g)

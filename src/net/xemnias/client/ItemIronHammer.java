@@ -6,4 +6,5 @@ public class ItemIronHammer extends Item {
 		super(i, xCoor, yCoor, name);
 	}
 
+
 }

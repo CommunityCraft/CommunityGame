@@ -42,14 +42,12 @@ public class Map
       			 
       			 if(tile == '0')
       			 {
-      				 tiles.add(i, new Tile(o*32, i*32, 32, 32));
-      				 tiles.get(i).bindTexture(CommunityGame.loader.getTextureById(0));
+      				 tiles.add(i, new Tile(o*32, i*32, 32, 32, 0));
       			 }
       			 
       			 if(tile == '1')
       			 {
-      				 tiles.add(i, new Tile(o*32, i*32, 32, 32));
-      				 tiles.get(i).bindTexture(CommunityGame.loader.getTextureById(1));
+      				 tiles.add(i, new Tile(o*32, i*32, 32, 32, 1));
       			 }
       		 }
         }

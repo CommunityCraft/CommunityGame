@@ -1,6 +1,7 @@
 package net.xemnias.client;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
@@ -15,11 +16,16 @@ public class CommunityGame extends StateBasedGame
 	public Map world;
 	public static RessourceLoader loader;
 	
+	public static ArrayList<Item> itemList;
+	public static ArrayList<Block> blockList;
+	
 	public CommunityGame(String name, int i, int j) throws SlickException 
 	{
 		super(name);
 		width = i;
 		height = j;
+		itemList = new ArrayList<Item>();
+		blockList = new ArrayList<Block>();
 	}
 
 

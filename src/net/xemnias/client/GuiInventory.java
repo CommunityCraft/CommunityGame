@@ -63,11 +63,12 @@ public class GuiInventory extends GuiContainer
 				selectedCase++;
 			else
 				selectedCase =0;
+
+			equipedItem = equipeSlots.get(selectedCase).getItem();
+			if(equipedItem != null)
+			System.out.println(equipedItem.Name);
 		}
 		
-		equipedItem = equipeSlots.get(selectedCase).getItem();
-		if(equipedItem != null)
-		System.out.println(equipedItem.Name);
 	}
 
 	public void render(GameContainer gc, CommunityGame sbg, Graphics g) 

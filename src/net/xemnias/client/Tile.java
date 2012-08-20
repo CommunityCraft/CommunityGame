@@ -2,25 +2,37 @@ package net.xemnias.client;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 
 public class Tile
 {
 	private float xPos, yPos, width, height;
-	private Image skin;
 	
-	public Tile(float i, float j, float w, float h)
+	private Item item;
+	private Block block;
+	
+	public Tile(float i, float j, float w, float h, int id)
 	{
 		xPos = i;
 		yPos = j;
 		width = w;
 		height = h;
+		
+		if(id == 0)
+		{
+			item = Item.ironHammer.getItemById(id);
+		}
+		else
+		{
+			block = Block.grass.getBlockById(id);
+		}
 	}
 	
 	public void render(GameContainer gc, Graphics g)
 	{
-		if(skin != null)
-			skin.draw(xPos, yPos);
+		if(item != null)
+			item.drawAsIcon(xPos, yPos, g);
+		else if(block != null)
+			block.draw(xPos, yPos, g);
 	}
 
 	public float getxPos() {
@@ -54,11 +66,5 @@ public class Tile
 	public void setHeight(float height) {
 		this.height = height;
 	}
-
-	public void bindTexture(Image image)
-	{
-		skin = image;
-	}
-	
 	
 }
