@@ -7,12 +7,15 @@ import org.newdawn.slick.Input;
 public class GuiButton extends GuiCompoment 
 {
 	protected int id;
+	private String displayString;
 	
-	public GuiButton(int i, float xPos, float yPos)
+	public GuiButton(int i, float xPos, float yPos, String str)
 	{
 		id = i;
 		x = xPos;
 		y = yPos;
+		
+		displayString = str;
 		
 		width = 400;
 		height = 40;
@@ -34,9 +37,11 @@ public class GuiButton extends GuiCompoment
 		if(isMouseOnIt(gc.getInput()))
 			i+=40;
 		drawTexturalQuad(g, CommunityGame.loader.getImageByName("gui.png"),0,i,400,40, x, y);
-		
+		drawCenteredString(displayString, x+200, y+20, g);
 
 	}
+
+
 
 	protected void init(GameContainer gc, CommunityGame sbg)
 	{

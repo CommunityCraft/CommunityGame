@@ -34,7 +34,7 @@ public class CommunityGame extends StateBasedGame
 		loader = new RessourceLoader();
 		loader.bindImageDirectoryToList("data/tiles/");
 		currentScreen = new Screen(this);
-		currentScreen.currentstate = new ScreenTest(this);
+		currentScreen.currentGuiState = new ScreenMainMenu(this);
 		
 		world = new Map("test.map", this);
 		world.load();
@@ -52,7 +52,6 @@ public class CommunityGame extends StateBasedGame
 		}
 		
 		addState(currentScreen);
-		getState(0).init(arg0, this);
 		enterState(0);
 	}
 	
@@ -120,6 +119,16 @@ public class CommunityGame extends StateBasedGame
 
 	public static void setWidth(int width) {
 		CommunityGame.width = width;
+	}
+
+
+	public void switchGuiTo(Screen screenGame) 
+	{
+		currentScreen.isGui = false;
+		currentScreen.currentGuiState = null;
+		currentScreen.currentstate = screenGame;
+		
+		currentScreen.currentstate.preLoad(getContainer(), this);
 	}
 
 }

@@ -1,5 +1,7 @@
 package net.xemnias.client;
 
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.geom.Rectangle;
 
 public class View
@@ -54,6 +56,26 @@ public class View
 
 	public void setHeight(float height) {
 		this.height = height;
+	}
+
+	public void move(GameContainer gc) 
+	{
+		if(gc.getInput().isKeyDown(Input.KEY_Z))
+		{
+			setyPos(getyPos()-1);
+		}
+		if(gc.getInput().isKeyDown(Input.KEY_S))
+		{
+			setyPos(getyPos()+1);
+		}
+		if(gc.getInput().isKeyDown(Input.KEY_Q))
+		{
+			setxPos(getxPos()-1);
+		}
+		if(gc.getInput().isKeyDown(Input.KEY_D))
+		{
+			setxPos(getxPos()+1);
+		}
 	}
 	
 	

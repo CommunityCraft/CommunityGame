@@ -27,4 +27,9 @@ public class Gui
 		g.setColor(display);
 		g.fillRect(f, g2, w, h);
 	}
+	
+	public void drawCenteredString(String displayString2, float x, float y, Graphics g)
+	{
+		g.drawString(displayString2, x- g.getFont().getWidth(displayString2)/2, y-g.getFont().getHeight(displayString2)/2);
+	}
 }
