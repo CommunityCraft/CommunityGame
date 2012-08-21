@@ -10,6 +10,8 @@ public class EntityPlayer extends Entity
 	{
 		super(i, name, att);
 		org.newdawn.slick.SpriteSheet sheet = new SpriteSheet(CommunityGame.loader.getImageByName("playerAnimation.png"), 32, 64);
-		animation = new Animation(sheet, 250);
+		animation = new Animation(sheet, 200);
 	}
+
+
 }

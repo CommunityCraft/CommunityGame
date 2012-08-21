@@ -50,6 +50,14 @@ public class RenderEngine
 	{
 		return camera;
 	}
+
+	public void renderEntities() 
+	{
+		for(int i = 0; i < CommunityGame.entities.size(); i++)
+		{
+			CommunityGame.entities.get(i).renderEntity(CommunityGame.entities.get(i));
+		}
+	}
 	
 	
 }

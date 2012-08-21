@@ -76,6 +76,9 @@ public class View
 		{
 			setxPos(getxPos()+1);
 		}
+		
+		Entity.entityPlayer.setX(getxPos()+width/2);
+		Entity.entityPlayer.setY(yPos+height/2);
 	}
 	
 	
