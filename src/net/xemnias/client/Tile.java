@@ -6,32 +6,37 @@ import org.newdawn.slick.Graphics;
 public class Tile
 {
 	private float xPos, yPos, width, height;
+	private boolean isBlock, isItem;
+	
 	
 	private Item item;
 	private Block block;
 	
-	public Tile(float i, float j, float w, float h, int id)
+	public Tile(float i, float j, float w, float h,	Block blockP)
 	{
+		isBlock = true;
 		xPos = i;
 		yPos = j;
 		width = w;
 		height = h;
-		
-		if(id == 0)
-		{
-			item = Item.ironHammer.getItemById(id);
-		}
-		else
-		{
-			block = Block.grass.getBlockById(id);
-		}
+		block = blockP;
+	}
+	
+	public Tile(float i, float j, float w, float h,	Item itemP)
+	{
+		isItem = true;
+		xPos = i;
+		yPos = j;
+		width = w;
+		height = h;
+		item = itemP;
 	}
 	
 	public void render(GameContainer gc, Graphics g)
 	{
-		if(item != null)
+		if(item != null && isItem)
 			item.drawAsIcon(xPos, yPos, g);
-		else if(block != null)
+		else if(block != null && isBlock)
 			block.draw(xPos, yPos, g);
 	}
 

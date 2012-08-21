@@ -42,12 +42,16 @@ public class Map
       			 
       			 if(tile == '0')
       			 {
-      				 tiles.add(i, new Tile(o*32, i*32, 32, 32, 0));
+      				 tiles.add(i, new Tile(o*32, i*32, 32, 32, Block.grass.getBlockById(2)));
       			 }
       			 
       			 if(tile == '1')
       			 {
-      				 tiles.add(i, new Tile(o*32, i*32, 32, 32, 1));
+      				 tiles.add(i, new Tile(o*32, i*32, 32, 32, Block.dirt.getBlockById(5)));
+      			 }
+      			 if(tile == '4')
+      			 {
+      				tiles.add(i, new Tile(o*32, i*32, 32, 32, Block.rightGrass.getBlockById(3)));
       			 }
       		 }
         }
