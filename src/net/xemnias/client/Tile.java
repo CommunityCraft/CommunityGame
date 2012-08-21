@@ -6,11 +6,12 @@ import org.newdawn.slick.Graphics;
 public class Tile
 {
 	private float xPos, yPos, width, height;
-	private boolean isBlock, isItem;
+	private boolean isBlock, isItem, isEntity;
 	
 	
 	private Item item;
 	private Block block;
+	public Entity entity;
 	
 	public Tile(float i, float j, float w, float h,	Block blockP)
 	{
@@ -32,12 +33,24 @@ public class Tile
 		item = itemP;
 	}
 	
+	public Tile(int i, int j, int w, int h, Entity entityP) 
+	{
+		isEntity = true;
+		xPos = i;
+		yPos = j;
+		width = w;
+		height = h;
+		entity = entityP;
+	}
+
 	public void render(GameContainer gc, Graphics g)
 	{
 		if(item != null && isItem)
 			item.drawAsIcon(xPos, yPos, g);
 		else if(block != null && isBlock)
 			block.draw(xPos, yPos, g);
+		else if(entity != null && isEntity)
+			entity.renderEntityByList(CommunityGame.entities);
 	}
 
 	public float getxPos() {

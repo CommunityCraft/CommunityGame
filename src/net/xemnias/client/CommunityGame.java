@@ -18,6 +18,7 @@ public class CommunityGame extends StateBasedGame
 	
 	public static ArrayList<Item> itemList;
 	public static ArrayList<Block> blockList;
+	public static ArrayList<Entity> entities;
 	
 	public CommunityGame(String name, int i, int j) throws SlickException 
 	{
@@ -26,6 +27,7 @@ public class CommunityGame extends StateBasedGame
 		height = j;
 		itemList = new ArrayList<Item>();
 		blockList = new ArrayList<Block>();
+		entities = new ArrayList<Entity>();
 	}
 
 

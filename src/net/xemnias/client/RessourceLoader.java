@@ -75,7 +75,7 @@ public class RessourceLoader
 		if(i == 6)
 			return terrainSheet.getSpriteAt(6, 0);
 		if(i == 7)
-			return terrainSheet.getSpriteAt(7, 1);
+			return terrainSheet.getSpriteAt(7, 0);
 		if(i == 8)
 			return terrainSheet.getSpriteAt(0, 1);
 		if(i == 9)

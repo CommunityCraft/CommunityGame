@@ -47,11 +47,12 @@ public class Map
       			 
       			 if(tile == '1')
       			 {
-      				 tiles.add(i, new Tile(o*32, i*32, 32, 32, Block.dirt.getBlockById(5)));
+      				 tiles.add(i, new Tile(o*32, i*32, 32, 32, Block.dirt.getBlockById(6)));
       			 }
       			 if(tile == '4')
       			 {
-      				tiles.add(i, new Tile(o*32, i*32, 32, 32, Block.rightGrass.getBlockById(3)));
+      				tiles.add(i, new Tile(o*32, i*32, 32, 32, Entity.entityPlayer));
+      				tiles.get(i).entity.setParentTile(tiles.get(i));
       			 }
       		 }
         }

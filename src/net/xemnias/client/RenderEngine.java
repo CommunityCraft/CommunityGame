@@ -34,7 +34,18 @@ public class RenderEngine
 			}
 		}
 	}
+	
+	public void renderEntityByList(ArrayList<Entity> entities)
+	{
+		for(int i = 0; i < entities.size(); i++)
+			renderEntity(entities.get(i));
+	}
 
+	public void renderEntity(Entity entity)
+	{
+		entity.animation.draw(entity.getX(), entity.getY());
+	}
+	
 	public View getCamera() 
 	{
 		return camera;
