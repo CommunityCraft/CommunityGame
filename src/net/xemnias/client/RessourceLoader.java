@@ -157,9 +157,9 @@ public class RessourceLoader
 		if(i == 47)
 			return terrainSheet.getSpriteAt(7, 6);
 		if(i == 48)
-			return terrainSheet.getSpriteAt(0, 6);
+			return terrainSheet.getSpriteAt(0, 7);
 		if(i == 49)
-			return terrainSheet.getSpriteAt(1, 6);
+			return terrainSheet.getSpriteAt(1, 7);
 		if(i == 50)
 			return terrainSheet.getSpriteAt(2, 7);
 		if(i == 51)
@@ -172,6 +172,16 @@ public class RessourceLoader
 			return terrainSheet.getSpriteAt(6, 7);
 		if(i == 55)
 			return terrainSheet.getSpriteAt(7, 7);
+		return null;
+	}
+
+	public Image getAnimationByName(String string)
+	{
+		try {
+			return new Image("data/entity/animation/"+string);
+		} catch (SlickException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 }

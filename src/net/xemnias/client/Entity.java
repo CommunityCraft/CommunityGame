@@ -2,7 +2,6 @@ package net.xemnias.client;
 
 import java.util.ArrayList;
 
-import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SpriteSheet;
 
@@ -46,6 +45,7 @@ public class Entity
 
 	public void renderEntity(Entity entity)
 	{
+		if(entity.animation != null)
 		entity.animation.draw(entity.getX(), entity.getY());
 	}
 	
@@ -54,6 +54,12 @@ public class Entity
 		org.newdawn.slick.SpriteSheet sheet = new SpriteSheet(imageByName, 32, 64);
 		animation = new Animation(sheet, 200);
 	}
+	
+	public void setAnimation(Animation anim)
+	{
+		animation = anim;
+	}
+
 	
 	public float getX() {
 		return x;

@@ -26,11 +26,11 @@ public class ScreenGame extends Screen {
 		
 		if(gc.getInput().isKeyPressed(Input.KEY_LEFT))
 		{
-			Entity.entityPlayer.setAnimationSprite(CommunityGame.loader.getImageByName("playerAnimation2.png"));
+			Entity.entityPlayer.setAnimation(AnimationList.playerStandingLeft);
 		}
 		if(gc.getInput().isKeyPressed(Input.KEY_RIGHT))
 		{
-			Entity.entityPlayer.setAnimationSprite(CommunityGame.loader.getImageByName("playerAnimation.png"));
+			Entity.entityPlayer.setAnimation(AnimationList.playerRunningRight);
 		}
 		
 	}

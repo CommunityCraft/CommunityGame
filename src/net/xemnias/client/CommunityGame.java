@@ -20,7 +20,7 @@ public class CommunityGame extends StateBasedGame
 	public static ArrayList<Block> blockList;
 	public static ArrayList<Entity> entities;
 	
-	public CommunityGame(String name, int i, int j) throws SlickException 
+	public CommunityGame(String name, int i, int j) throws SlickException
 	{
 		super(name);
 		width = i;
@@ -35,6 +35,9 @@ public class CommunityGame extends StateBasedGame
 	{
 		loader = new RessourceLoader();
 		loader.bindImageDirectoryToList("data/tiles/");
+		
+		AnimationList.init();
+		
 		currentScreen = new Screen(this);
 		currentScreen.currentGuiState = new ScreenMainMenu(this);
 		

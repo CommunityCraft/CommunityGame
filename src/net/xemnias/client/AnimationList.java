@@ -1,12 +1,22 @@
 package net.xemnias.client;
 
-public class EntityPlayer extends Entity 
-{
+import org.newdawn.slick.Image;
 
-	public EntityPlayer(int i, String name, boolean att)
+public class AnimationList 
+{
+	public static Animation playerStandingRight;
+	public static Animation playerStandingLeft;
+	public static Animation playerRunningRight;
+	
+	public static void init()
 	{
-		super(i, name, att);
-		/*
+		playerStandingRight = new Animation(new org.newdawn.slick.SpriteSheet(CommunityGame.loader.getAnimationByName("playerStandingRight.png"), 32,64), 150);
+		playerStandingLeft = new Animation(new org.newdawn.slick.SpriteSheet(CommunityGame.loader.getAnimationByName("playerStandingLeft.png"), 32,64), 150);
+		playerRunningRight = new Animation(playerRrunningRightSprite(), 150);
+	}
+	
+	private static Image[] playerRrunningRightSprite()
+	{
 		Image[] img = new Image[8];
 		
 		img[0] = CommunityGame.loader.getImageByName("playerAnimationRun.png").getSubImage(0, 0, 32, 64);
@@ -17,10 +27,7 @@ public class EntityPlayer extends Entity
 		img[5] = CommunityGame.loader.getImageByName("playerAnimationRun.png").getSubImage(182, 0, 32, 64);
 		img[6] = CommunityGame.loader.getImageByName("playerAnimationRun.png").getSubImage(214, 0, 38, 64);
 		img[7] = CommunityGame.loader.getImageByName("playerAnimationRun.png").getSubImage(252, 0, 44, 64);
-		*/
-		animation = AnimationList.playerStandingRight;
+		
+		return img;
 	}
-
-
-
 }
