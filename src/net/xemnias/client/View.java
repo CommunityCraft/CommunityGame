@@ -60,11 +60,11 @@ public class View
 
 	public void move(GameContainer gc) 
 	{
-		/*if(Entity.entityPlayer.turn == 1)
+		if(Entity.entityPlayer.turn == 1 && !gc.getInput().isKeyDown(Input.KEY_SPACE))
 			Entity.entityPlayer.setAnimation(AnimationList.playerStandingRight);
-		else
+		else if(!gc.getInput().isKeyDown(Input.KEY_SPACE))
 			Entity.entityPlayer.setAnimation(AnimationList.playerStandingLeft);
-			*/
+		
 		if(gc.getInput().isKeyDown(Input.KEY_Z))
 		{
 			setyPos(getyPos()-1);
@@ -84,6 +84,16 @@ public class View
 			setxPos(getxPos()+1);
 			Entity.entityPlayer.setAnimation(AnimationList.playerRunningRight);
 			Entity.entityPlayer.turn = 1;
+		}
+		
+
+		if(gc.getInput().isKeyPressed(Input.KEY_SPACE))
+		{
+			if(Entity.entityPlayer.turn == 0)
+			Entity.entityPlayer.setAnimation(AnimationList.playerJumpingLeft);
+			else
+
+				Entity.entityPlayer.setAnimation(AnimationList.playerJumpingRight);
 		}
 		
 		Entity.entityPlayer.setX(getxPos()+width/2);
