@@ -184,4 +184,14 @@ public class RessourceLoader
 		}
 		return null;
 	}
+
+	public Image getBackgroundByName(String string) 
+	{
+		try {
+			return new Image("data/map/background/"+string);
+		} catch (SlickException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

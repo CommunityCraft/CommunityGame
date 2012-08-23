@@ -17,6 +17,8 @@ public class Map
 	
 	private FileReader reader;
 	
+	private BackGround backGround;
+	
 	private int[][] map;
 	private StringBuilder str;
 	
@@ -80,5 +82,14 @@ public class Map
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void bindBackGround(BackGround bg)
+	{
+		backGround = bg;
+	}
+
+	public BackGround getBackGround() {
+		return backGround;
 	}
 }

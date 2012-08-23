@@ -7,11 +7,11 @@ import org.newdawn.slick.geom.Rectangle;
 public class View
 {
 	private float xPos, yPos, width, height;
-	//private RenderEngine render;
+	private RenderEngine render;
 	
 	public View(RenderEngine render)
 	{
-		//this.render = render;
+		this.render = render;
 		xPos = 150;
 		yPos = 80;
 		width = 256;
@@ -75,13 +75,20 @@ public class View
 		}
 		if(gc.getInput().isKeyDown(Input.KEY_Q))
 		{
+			if(!(Entity.entityPlayer.getX() < 90))
 			setxPos(getxPos()-1);
+			else
+				render.parent.world.getBackGround().moveRight();
 			Entity.entityPlayer.setAnimation(AnimationList.playerRunningLeft);
 			Entity.entityPlayer.turn = 0;
 		}
 		if(gc.getInput().isKeyDown(Input.KEY_D))
 		{
-			setxPos(getxPos()+1);
+
+			if(!(Entity.entityPlayer.getX() > 750))
+				setxPos(getxPos()+1);
+			else
+				render.parent.world.getBackGround().moveLeft();
 			Entity.entityPlayer.setAnimation(AnimationList.playerRunningRight);
 			Entity.entityPlayer.turn = 1;
 		}

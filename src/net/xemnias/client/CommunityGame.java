@@ -44,6 +44,9 @@ public class CommunityGame extends StateBasedGame
 		world = new Map("test.map", this);
 		world.load();
 		world.buildMap();
+		
+		world.bindBackGround(new BackGround(loader.getBackgroundByName("test.png")));
+		
 		render = new RenderEngine(this);
 	}
 	

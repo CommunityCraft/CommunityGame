@@ -24,9 +24,13 @@ public class ScreenGame extends Screen {
 		if(gc.getInput().isKeyPressed(Input.KEY_E))
 			cc.showOrHideDialog(inventory);
 		
+		if(Entity.entityPlayer.getX() > gc.getWidth()-50 && gc.getInput().isKeyDown(Input.KEY_D))
+			parent.world.getBackGround().moveRight();
+		
 	}
 	public void render(GameContainer gc, Graphics g, CommunityGame cc)
 	{
+		cc.render.renderCurrentMapBackGround();
 		cc.render.renderTiles(gc, g);
 		cc.render.renderEntities();
 	}

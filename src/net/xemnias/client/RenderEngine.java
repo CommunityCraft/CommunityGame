@@ -10,10 +10,12 @@ public class RenderEngine
 {
 	private ArrayList<Tile> tiles = new ArrayList<Tile>();
 	private View camera;
+	public CommunityGame parent;
 	
 	public RenderEngine(CommunityGame cc)
 	{
 		tiles = cc.world.tiles;
+		parent = cc;
 		camera = new View(this);
 	}
 	
@@ -57,6 +59,11 @@ public class RenderEngine
 		{
 			CommunityGame.entities.get(i).renderEntity(CommunityGame.entities.get(i));
 		}
+	}
+
+	public void renderCurrentMapBackGround() 
+	{
+		parent.world.getBackGround().draw(-500, 0);
 	}
 	
 	
