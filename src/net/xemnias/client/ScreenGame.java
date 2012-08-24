@@ -7,12 +7,16 @@ import org.newdawn.slick.Input;
 public class ScreenGame extends Screen {
 
 	private GuiInventory inventory = new GuiInventory(parent);
-	
+	Entity t;
 	public ScreenGame(CommunityGame communityGame)
 	{
 		super(communityGame);
-		CommunityGame.entities.add(Entity.entityPlayer);
-		CommunityGame.entities.add(Entity.corruptedSoul);
+		parent.gde.registerEntity(Entity.entityPlayer);
+		parent.gde.registerEntity(Entity.corruptedSoul);
+		Entity.corruptedSoul.setX(75);
+		Entity.corruptedSoul.setY(215);
+		Entity.corruptedSoul.setIAPath(new IAPathManager(new Location(Entity.corruptedSoul.x, Entity.corruptedSoul.y), new Location(250, 215), true));
+		t = Entity.corruptedSoul;
 	}
 	
 	public void preLoad(GameContainer gc, CommunityGame cc)
@@ -25,6 +29,7 @@ public class ScreenGame extends Screen {
 			cc.showOrHideDialog(inventory);
 		
 		cc.gde.updateEntity(cc);
+		cc.gde.updateIAPath();
 		
 	}
 	public void render(GameContainer gc, Graphics g, CommunityGame cc)

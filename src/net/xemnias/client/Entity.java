@@ -21,23 +21,13 @@ public class Entity
 
 	public static final EntityPlayer entityPlayer = new EntityPlayer(0, "Xemnias", false);
 	public static final EntityCorruptedSoul corruptedSoul = new EntityCorruptedSoul(11, "Soul", true);
+	protected IAPathManager IAPath;
 	
 	public Entity(int i, String name, boolean att)
 	{
 		id = i;
 		Name = name;
 		Passive = att;
-		
-		
-		for(int z = 0; z < CommunityGame.entities.size(); z++)
-		{
-			if(i == CommunityGame.entities.get(z).id)
-			{
-				System.err.println("ID item similaire : "+i);
-				System.exit(0);
-			}
-		}
-		CommunityGame.entities.add(this);
 	}
 	
 	protected void update(CommunityGame cc)
@@ -74,6 +64,16 @@ public class Entity
 	}
 
 	
+	public IAPathManager getIAPath() 
+	{
+		
+		return IAPath;
+	}
+
+	public void setIAPath(IAPathManager iAPath) {
+		IAPath = iAPath;
+	}
+
 	public float getX() {
 		return x;
 	}
