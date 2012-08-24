@@ -14,6 +14,7 @@ public class CommunityGame extends StateBasedGame
 	private Screen currentScreen;
 	public RenderEngine render;
 	public Map world;
+	public GDE gde = new GDE();
 	public static RessourceLoader loader;
 	
 	public static ArrayList<Item> itemList;

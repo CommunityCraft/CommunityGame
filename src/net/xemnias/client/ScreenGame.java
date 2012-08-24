@@ -11,6 +11,7 @@ public class ScreenGame extends Screen {
 	public ScreenGame(CommunityGame communityGame)
 	{
 		super(communityGame);
+		CommunityGame.entities.add(Entity.entityPlayer);
 	}
 	
 	public void preLoad(GameContainer gc, CommunityGame cc)
@@ -19,13 +20,10 @@ public class ScreenGame extends Screen {
 	}
 	public void update(GameContainer gc, int delta, CommunityGame cc)
 	{
-		cc.render.getCamera().move(gc);
-		
 		if(gc.getInput().isKeyPressed(Input.KEY_E))
 			cc.showOrHideDialog(inventory);
 		
-		if(Entity.entityPlayer.getX() > gc.getWidth()-50 && gc.getInput().isKeyDown(Input.KEY_D))
-			parent.world.getBackGround().moveRight();
+		cc.gde.updateEntity(cc);
 		
 	}
 	public void render(GameContainer gc, Graphics g, CommunityGame cc)

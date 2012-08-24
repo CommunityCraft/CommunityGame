@@ -2,6 +2,7 @@ package net.xemnias.client;
 
 import java.util.ArrayList;
 
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SpriteSheet;
 
@@ -10,12 +11,15 @@ public class Entity
 	public int id;
 	public String Name;
 	public boolean Passive;
+
+	public int turn = 0;
 	
-	private float x, y;
+	protected float x, y;
 	protected int life = 100;
 	
 	protected Animation animation;
-	
+
+	public static final EntityPlayer entityPlayer = new EntityPlayer(0, "Xemnias", false);
 	
 	public Entity(int i, String name, boolean att)
 	{
@@ -34,8 +38,16 @@ public class Entity
 		}
 		CommunityGame.entities.add(this);
 	}
-
-	public static final EntityPlayer entityPlayer = new EntityPlayer(0, "Xemnias", false);
+	
+	protected void update(CommunityGame cc)
+	{
+		
+	}
+	
+	protected void render(CommunityGame cc, Graphics g)
+	{
+		
+	}
 	
 	public void renderEntityByList(ArrayList<Entity> entities)
 	{
