@@ -12,10 +12,10 @@ public class View
 	public View(RenderEngine render)
 	{
 		this.render = render;
-		xPos = 150;
-		yPos = 80;
-		width = 256;
-		height = 380/2;
+		xPos = 00;
+		yPos = 00;
+		width = 840;
+		height = 580;
 	}
 
 	public boolean isOnScreen(Tile tile)
@@ -65,20 +65,18 @@ public class View
 		else if(!gc.getInput().isKeyDown(Input.KEY_SPACE))
 			Entity.entityPlayer.setAnimation(AnimationList.playerStandingLeft);
 		
-		if(gc.getInput().isKeyDown(Input.KEY_Z))
-		{
-			setyPos(getyPos()-1);
-		}
 		if(gc.getInput().isKeyDown(Input.KEY_S))
-		{
-			setyPos(getyPos()+1);
-		}
+			Entity.entityPlayer.setY(Entity.entityPlayer.getY()+1);
+		if(gc.getInput().isKeyDown(Input.KEY_Z))
+			Entity.entityPlayer.setY(Entity.entityPlayer.getY()-1);
+		
 		if(gc.getInput().isKeyDown(Input.KEY_Q))
 		{
 			if(!(Entity.entityPlayer.getX() < 90))
-			setxPos(getxPos()-1);
+				Entity.entityPlayer.setX(Entity.entityPlayer.getX()-1);
 			else
 				render.parent.world.getBackGround().moveRight();
+			
 			Entity.entityPlayer.setAnimation(AnimationList.playerRunningLeft);
 			Entity.entityPlayer.turn = 0;
 		}
@@ -86,9 +84,11 @@ public class View
 		{
 
 			if(!(Entity.entityPlayer.getX() > 750))
-				setxPos(getxPos()+1);
+				Entity.entityPlayer.setX(Entity.entityPlayer.getX()+1);
 			else
 				render.parent.world.getBackGround().moveLeft();
+			
+			
 			Entity.entityPlayer.setAnimation(AnimationList.playerRunningRight);
 			Entity.entityPlayer.turn = 1;
 		}
@@ -102,9 +102,6 @@ public class View
 
 				Entity.entityPlayer.setAnimation(AnimationList.playerJumpingRight);
 		}
-		
-		Entity.entityPlayer.setX(getxPos()+width/2);
-		Entity.entityPlayer.setY(yPos+height/2);
 	}
 	
 	

@@ -44,17 +44,20 @@ public class Map
       			 
       			 if(tile == '0')
       			 {
-      				 tiles.add(i, new Tile(o*32, i*32, 32, 32, Block.grass.getBlockById(2)));
+
       			 }
       			 
       			 if(tile == '1')
       			 {
-      				 tiles.add(i, new Tile(o*32, i*32, 32, 32, Block.dirt.getBlockById(6)));
+      				 tiles.add(new Tile(o*32, i*32, 32, 32, Block.dirt.getBlockById(1)));
       			 }
-      			 if(tile == '4')
+      			 if(tile == '2')
       			 {
-      				tiles.add(i, new Tile(o*32, i*32, 32, 32, Entity.entityPlayer));
-      				tiles.get(i).entity.setParentTile(tiles.get(i));
+      				tiles.add(new Tile(o*32, i*32, 32, 32, Block.dirt.getBlockById(2)));
+      			 }
+      			 if(tile == '3')
+      			 {
+      				 tiles.add(new Tile(o*32, i*32, 32, 32, Block.dirt.getBlockById(3)));
       			 }
       		 }
         }
