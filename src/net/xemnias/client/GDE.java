@@ -1,5 +1,7 @@
 package net.xemnias.client;
 
+import org.newdawn.slick.Graphics;
+
 public class GDE implements Gestionary 
 {
 	public void updateEntity(CommunityGame cc) 
@@ -20,5 +22,11 @@ public class GDE implements Gestionary
 			if(CommunityGame.entities.get(i).getIAPath() != null)
 				CommunityGame.entities.get(i).getIAPath().moveEntity(CommunityGame.entities.get(i));
 		}
+	}
+	
+	public void renderAdditionalStuff(Graphics g, CommunityGame cc)
+	{
+		for(int i = 0; i < CommunityGame.entities.size(); i++)
+			CommunityGame.entities.get(i).render(cc, g);
 	}
 }
