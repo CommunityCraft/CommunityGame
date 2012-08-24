@@ -12,6 +12,7 @@ public class ScreenGame extends Screen {
 	{
 		super(communityGame);
 		CommunityGame.entities.add(Entity.entityPlayer);
+		CommunityGame.entities.add(Entity.corruptedSoul);
 	}
 	
 	public void preLoad(GameContainer gc, CommunityGame cc)

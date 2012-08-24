@@ -20,6 +20,7 @@ public class Entity
 	protected Animation animation;
 
 	public static final EntityPlayer entityPlayer = new EntityPlayer(0, "Xemnias", false);
+	public static final EntityCorruptedSoul corruptedSoul = new EntityCorruptedSoul(11, "Soul", true);
 	
 	public Entity(int i, String name, boolean att)
 	{

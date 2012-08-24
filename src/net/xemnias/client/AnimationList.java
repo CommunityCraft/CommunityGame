@@ -10,6 +10,8 @@ public class AnimationList
 	public static Animation playerRunningLeft;
 	public static Animation playerJumpingLeft;
 	public static Animation playerJumpingRight;
+
+	public static Animation corruptedSoulStantingRight;
 	
 	public static void init()
 	{
@@ -19,8 +21,22 @@ public class AnimationList
 		playerRunningLeft = new Animation(playerRunningLeftSprite(), 150);
 		playerJumpingRight = new Animation(playerJumpingRightSprite(), 70);
 		playerJumpingLeft = new Animation(playerJumpingLeftSprite(), 70);
+		
+		corruptedSoulStantingRight = new Animation(corruptedSoulStandingRight(), 200);
 	}
 	
+	private static Image[] corruptedSoulStandingRight() 
+	{
+		Image[] img = new Image[4];
+		
+		img[0] = CommunityGame.loader.getAnimationByName("corruptedSoulStandingRight.png").getSubImage(0, 0, 41, 32);
+		img[1] = CommunityGame.loader.getAnimationByName("corruptedSoulStandingRight.png").getSubImage(41, 0, 41, 32);
+		img[2] = CommunityGame.loader.getAnimationByName("corruptedSoulStandingRight.png").getSubImage(82, 0, 43, 32);
+		img[3] = CommunityGame.loader.getAnimationByName("corruptedSoulStandingRight.png").getSubImage(125, 0, 40, 32);
+		
+		return img;
+	}
+
 	private static Image[] playerJumpingRightSprite()
 	{
 		Image[] img = new Image[17];
