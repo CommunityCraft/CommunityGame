@@ -28,8 +28,8 @@ public class ScreenGame extends Screen {
 		if(gc.getInput().isKeyPressed(Input.KEY_E))
 			cc.showOrHideDialog(inventory);
 		
-		cc.gde.updateEntity(cc);
-		cc.gde.updateIAPath();
+		cc.gde.updateEntity(cc, delta);
+		cc.gde.updateIAPath(delta);
 		
 	}
 	public void render(GameContainer gc, Graphics g, CommunityGame cc)

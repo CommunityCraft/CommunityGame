@@ -4,10 +4,10 @@ import org.newdawn.slick.Graphics;
 
 public class GDE implements Gestionary 
 {
-	public void updateEntity(CommunityGame cc) 
+	public void updateEntity(CommunityGame cc, int delta) 
 	{
 		for(int i = 0; i < CommunityGame.entities.size(); i++)
-			CommunityGame.entities.get(i).update(cc);
+			CommunityGame.entities.get(i).update(cc, delta);
 	}
 	
 	public void registerEntity(Entity en)
@@ -15,12 +15,12 @@ public class GDE implements Gestionary
 		CommunityGame.entities.add(en);
 	}
 	
-	public void updateIAPath()
+	public void updateIAPath(int delta)
 	{
 		for(int i = 0; i < CommunityGame.entities.size(); i++)
 		{
 			if(CommunityGame.entities.get(i).getIAPath() != null)
-				CommunityGame.entities.get(i).getIAPath().moveEntity(CommunityGame.entities.get(i));
+				CommunityGame.entities.get(i).getIAPath().moveEntity(CommunityGame.entities.get(i), delta);
 		}
 	}
 	

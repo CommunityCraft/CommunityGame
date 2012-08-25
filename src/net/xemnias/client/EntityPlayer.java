@@ -12,7 +12,7 @@ public class EntityPlayer extends Entity
 		animation = AnimationList.playerStandingRight;
 	}
 
-	public void update(CommunityGame cc)
+	public void update(CommunityGame cc, int delta)
 	{
 		if(turn == 0)
 			animation = AnimationList.playerStandingLeft;
@@ -20,21 +20,21 @@ public class EntityPlayer extends Entity
 			animation = AnimationList.playerStandingRight;
 		if(cc.getContainer().getInput().isKeyDown(Input.KEY_Z))
 		{
-			y--;
+			y-= 100 * delta / 1000f;;
 		}
 		if(cc.getContainer().getInput().isKeyDown(Input.KEY_S))
 		{
-			y++;
+			y+= 100 * delta / 1000f;;
 		}
 		if(cc.getContainer().getInput().isKeyDown(Input.KEY_Q))
 		{
-			x--;
+			x-= 100 * delta / 1000f;
 			animation = AnimationList.playerRunningLeft;
 			turn = 0;
 		}
 		if(cc.getContainer().getInput().isKeyDown(Input.KEY_D))
 		{
-			x++;
+			x+= 100 * delta / 1000f;;
 			animation = AnimationList.playerRunningRight;
 			turn = 1;
 		}

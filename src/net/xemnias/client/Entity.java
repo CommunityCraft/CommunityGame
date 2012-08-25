@@ -30,7 +30,7 @@ public class Entity
 		Passive = att;
 	}
 	
-	protected void update(CommunityGame cc)
+	protected void update(CommunityGame cc, int delta)
 	{
 		
 	}

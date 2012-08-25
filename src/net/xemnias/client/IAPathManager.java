@@ -15,15 +15,15 @@ public class IAPathManager extends IAManager
 		goBack = gb;
 	}
 	
-	public void moveEntity(Entity en)
+	public void moveEntity(Entity en, int delta)
 	{
-		Location loc = new Location(en.x, en.y);
+		Location loc = new Location((int)en.x, (int)en.y);
 		
-		if(originalLocation.x == loc.x && originalLocation.y == loc.y) // si il est la position de départ
+		if((int)originalLocation.x == loc.x && (int)originalLocation.y == loc.y) // si il est la position de départ
 		{
 			isMovingToFutur = true;
 		}
-		if(futurLocation.x == loc.x && futurLocation.y == loc.y && goBack) // si on est a la position final && qu'on y retourne
+		if((int)futurLocation.x == loc.x && (int)futurLocation.y == loc.y && goBack) // si on est a la position final && qu'on y retourne
 		{
 			isMovingToOriginal = true;
 
@@ -32,52 +32,52 @@ public class IAPathManager extends IAManager
 		
 		if(isMovingToFutur)
 		{
-			if(loc.x == futurLocation.x && loc.y == futurLocation.y)
+			if((int)loc.x == futurLocation.x && (int)loc.y == futurLocation.y)
 			{
 				isMovingToFutur = false;
 			}
 			
-			if(originalLocation.x < futurLocation.x && isMovingToFutur)
+			if((int)originalLocation.x < futurLocation.x && isMovingToFutur)
 			{
-				en.x+= 0.5f;
+				en.x+=(int) 100 * delta / 1000f;
 			}
-			if(originalLocation.x > futurLocation.x && isMovingToFutur)
+			if((int)originalLocation.x > futurLocation.x && isMovingToFutur)
 			{
-				en.x-= 0.5f;
+				en.x-=(int) 100 * delta / 1000f;
 			}
 			
-			if(originalLocation.y < futurLocation.y && isMovingToFutur)
+			if((int)originalLocation.y < futurLocation.y && isMovingToFutur)
 			{
-				en.y+= 0.5f;
+				en.y+=(int) 100 * delta / 1000f;
 			}
-			if(originalLocation.y > futurLocation.y && isMovingToFutur)
+			if((int)originalLocation.y > futurLocation.y && isMovingToFutur)
 			{
-				en.y-= 0.5f;
+				en.y-=(int) 100 * delta / 1000f;
 			}
 			
 		}
 		if(isMovingToOriginal)
 		{
-			if(loc.x == originalLocation.x && loc.y == originalLocation.y)
+			if((int)loc.x == originalLocation.x && (int)loc.y == originalLocation.y)
 			{
 				isMovingToOriginal = false;
 			}
-			if(futurLocation.x < originalLocation.x && isMovingToOriginal)
+			if((int)futurLocation.x < originalLocation.x && isMovingToOriginal)
 			{
-				en.x+= 0.5f;
+				en.x+=(int) 100 * delta / 1000f;
 			}
 			if(futurLocation.x > originalLocation.x && isMovingToOriginal)
 			{
-				en.x-= 0.5f;
+				en.x-=(int) 100 * delta / 1000f;
 			}
 			
 			if(futurLocation.y < originalLocation.y && isMovingToOriginal)
 			{
-				en.y+= 0.5f;
+				en.y+=(int) 100 * delta / 1000f;
 			}
 			if(futurLocation.y > originalLocation.y && isMovingToOriginal)
 			{
-				en.y-= 0.5f;
+				en.y-= (int) 100 * delta / 1000f;
 			}
 		}
 	}
