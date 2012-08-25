@@ -40,7 +40,7 @@ public class CommunityGame extends StateBasedGame
 		AnimationList.init();
 		
 		currentScreen = new Screen(this);
-		currentScreen.currentGuiState = new ScreenMainMenu(this);
+		currentScreen.currentGuiState = new ScreenInitGame(this);
 		
 		world = new Map("test.map", this);
 		world.load();
@@ -138,6 +138,15 @@ public class CommunityGame extends StateBasedGame
 		currentScreen.currentstate = screenGame;
 		
 		currentScreen.currentstate.preLoad(getContainer(), this);
+	}
+	
+	public void switchGuiToOtherGui(ScreenGui screen) 
+	{
+		currentScreen.isGui = true;
+		currentScreen.currentGuiState = screen;
+		currentScreen.currentstate = null;
+		
+		currentScreen.currentGuiState.preLoad(getContainer(), this);
 	}
 
 }

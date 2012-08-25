@@ -15,7 +15,7 @@ public class Screen extends BasicGameState
 	public boolean isGui = true;
 	
 	public Screen currentstate;
-	public ScreenMainMenu currentGuiState;
+	public ScreenGui currentGuiState;
 
 	public Screen(CommunityGame communityGame)
 	{

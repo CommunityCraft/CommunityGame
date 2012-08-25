@@ -32,4 +32,11 @@ public class Gui
 	{
 		g.drawString(displayString2, x- g.getFont().getWidth(displayString2)/2, y-g.getFont().getHeight(displayString2)/2);
 	}
+	
+	public void fillRectWithAlpha(int x, int y, int w, int h, Color c, float alpha, Graphics g)
+	{
+		Color cA = new Color(c.getRed(), c.getGreen(), c.getBlue(), alpha);
+		g.setColor(cA);
+		g.fillRect(x, y, w, h);
+	}
 }

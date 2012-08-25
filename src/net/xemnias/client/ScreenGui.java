@@ -10,6 +10,7 @@ import org.newdawn.slick.state.StateBasedGame;
 public class ScreenGui extends Screen
 {
 	protected ArrayList<GuiButton> control = new ArrayList<GuiButton>();
+	protected Gui gui = new Gui();
 	
 	public ScreenGui(CommunityGame communityGame)
 	{
