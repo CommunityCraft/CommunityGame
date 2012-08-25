@@ -8,8 +8,9 @@ import org.newdawn.slick.SlickException;
 
 public class ScreenInitGame extends ScreenGui 
 {
-	private Image xemProd;
+	private Image xemProd, maciaProd;
 	public boolean finish = false;
+	private boolean macia= false, xemnias = true;
 	public ScreenInitGame(CommunityGame cc)
 	{
 		super(cc);
@@ -19,6 +20,7 @@ public class ScreenInitGame extends ScreenGui
 	{
 		try {
 			xemProd = new Image("data/image/xemProd.png");
+			maciaProd = new Image("data/image/maciaProd.png");
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
@@ -37,31 +39,76 @@ public class ScreenInitGame extends ScreenGui
 	
 	public void render(final GameContainer gc, final Graphics g, CommunityGame cc) 
 	{
-		g.drawImage(xemProd, 0, 0);
+		if(xemnias)
+		{
+			g.drawImage(xemProd, 0, 0);
+			if(side == 0)
+			{
+				if(loop == 30)
+				{
+					a-= 0.035f;
+					loop = 0;
+					if((float) a < -0.5f)
+						side = 1;
+				}
+			}
+			else if(side == 1)
+			{
+				if(loop == 30)
+				{
+					a+= 0.035f;
+					loop = 0;
+				}
+				if(a > 1.2f)
+				{
+					side = 0;
+					a=1.0f;
+					xemnias = false;
+					loop = 0;
+				}
+			}
+			gui.fillRectWithAlpha(0, 0, 840, 580, Color.black, a, g);
+		}
 		
-		if(side == 0)
+		if(!xemnias && !macia)
 		{
-			if(loop == 30)
+			if(loop == 1250)
 			{
-				a-= 0.035f;
-				loop = 0;
-				if((float) a < -0.5f)
-					side = 1;
-			}
-		}
-		else if(side == 1)
-		{
-			if(loop == 30)
-			{
-				a+= 0.035f;
+				macia = true;
 				loop = 0;
 			}
-			if(a > 1.2f)
-			{
-				finish = true;
-			}
+				g.setColor(Color.white);
+			g.drawString("En association avec...", gc.getWidth() /2 - g.getFont().getWidth("En association avec...")/2, gc.getHeight() /2 - g.getFont().getHeight("En association avec...")/2);
+			
 		}
-		gui.fillRectWithAlpha(0, 0, 840, 580, Color.black, a, g);
+		
+		if(macia)
+		{
+			g.drawImage(maciaProd, 0, 0);
+			if(side == 0)
+			{
+				if(loop == 30)
+				{
+					a-= 0.035f;
+					loop = 0;
+					if((float) a < -0.5f)
+						side = 1;
+				}
+			}
+			else if(side == 1)
+			{
+				if(loop == 30)
+				{
+					a+= 0.035f;
+					loop = 0;
+				}
+				if(a > 1.2f)
+				{
+					finish = true;
+				}
+			}
+			gui.fillRectWithAlpha(0, 0, 840, 580, Color.black, a, g);
+		}
 		loop++;
 	}
 }

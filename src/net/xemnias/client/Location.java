@@ -10,8 +10,7 @@ public class Location
 		y =j;
 	}
 
-	public Location(float x2, float y2) 
-	{
+	public Location(float x2, float y2) {
 		x = (int) x2;
 		y = (int) y2;
 	}

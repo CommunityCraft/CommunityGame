@@ -4,8 +4,7 @@ import java.util.ArrayList;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.SlickException;
-import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.Image;
 
 public class ScreenGui extends Screen
 {
@@ -17,26 +16,14 @@ public class ScreenGui extends Screen
 		super(communityGame);
 	}
 	
+	public void actionPerformed(int id, CommunityGame cc) {}
 	
-	public void init(GameContainer arg0, StateBasedGame arg1) throws SlickException
+	
+	public void drawDefaultBackground()
 	{
-		currentstate.preLoad(arg0, parent);
-	}
-	
-	public void render(GameContainer arg0, StateBasedGame arg1, Graphics arg2) throws SlickException
-	{
-		currentstate.render(arg0, arg2, parent);
-		drawButton(arg2, arg0, parent);
-	}
-	
-	public void update(GameContainer arg0, StateBasedGame arg1, int arg2) throws SlickException
-	{
-		currentstate.update(arg0, arg2, parent);
-
-	}
-	
-	public void actionPerformed(int id, CommunityGame cc) {
-	}
+		Image img = CommunityGame.loader.getBackgroundByName("mainMenuBg.png");
+		img.draw();
+	}	
 	
 	public void drawButton(Graphics g, GameContainer gc, CommunityGame cc)
 	{

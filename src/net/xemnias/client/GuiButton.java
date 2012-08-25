@@ -1,5 +1,6 @@
 package net.xemnias.client;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -33,9 +34,13 @@ public class GuiButton extends GuiCompoment
 	
 	protected void render(GameContainer gc, CommunityGame cc, Graphics g)
 	{
+		g.setColor(Color.white);
 		int i = 0;
 		if(isMouseOnIt(gc.getInput()))
+		{
+			g.setColor(Color.lightGray);
 			i+=40;
+		}
 		drawTexturalQuad(g, CommunityGame.loader.getImageByName("gui.png"),0,i,400,40, x, y);
 		drawCenteredString(displayString, x+200, y+20, g);
 

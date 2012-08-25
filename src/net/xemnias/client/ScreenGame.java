@@ -39,5 +39,6 @@ public class ScreenGame extends Screen {
 		cc.render.renderEntities();
 		cc.gde.renderAdditionalStuff(g, cc);
 		pInfo.render(gc, cc, g);
+		cc.gde.drawIAPath(g);
 	}
 }
