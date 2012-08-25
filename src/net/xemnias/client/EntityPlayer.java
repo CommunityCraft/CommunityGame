@@ -32,7 +32,7 @@ public class EntityPlayer extends Entity
 			animation = AnimationList.playerRunningLeft;
 			turn = 0;
 		}
-		if(cc.getContainer().getInput().isKeyDown(Input.KEY_D))
+		else if(cc.getContainer().getInput().isKeyDown(Input.KEY_D))
 		{
 			x+= 100 * delta / 1000f;;
 			animation = AnimationList.playerRunningRight;

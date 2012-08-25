@@ -60,6 +60,7 @@ public class ScreenGui extends Screen
 			if(control.get(i).isMouseOnIt(gc.getInput()))
 			{
 				actionPerformed(control.get(i).id, cc);
+				Sound.button.play();
 			}
 		}
 	}

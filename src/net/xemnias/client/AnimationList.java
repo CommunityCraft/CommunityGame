@@ -17,8 +17,8 @@ public class AnimationList
 	{
 		playerStandingRight = new Animation(new org.newdawn.slick.SpriteSheet(CommunityGame.loader.getAnimationByName("playerStandingRight.png"), 32,64), 150);
 		playerStandingLeft = new Animation(new org.newdawn.slick.SpriteSheet(CommunityGame.loader.getAnimationByName("playerStandingLeft.png"), 32,64), 150);
-		playerRunningRight = new Animation(playerRunningRightSprite(), 150);
-		playerRunningLeft = new Animation(playerRunningLeftSprite(), 150);
+		playerRunningRight = new Animation(playerRunningRightSprite(), 100);
+		playerRunningLeft = new Animation(playerRunningLeftSprite(), 100);
 		playerJumpingRight = new Animation(playerJumpingRightSprite(), 70);
 		playerJumpingLeft = new Animation(playerJumpingLeftSprite(), 70);
 		
