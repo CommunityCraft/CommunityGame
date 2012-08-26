@@ -28,8 +28,8 @@ public class GDE implements Gestionary
 	{
 		for(int i = 0; i < CommunityGame.entities.size(); i++)
 		{
-			//if(CommunityGame.entities.get(i).getIAPath() != null)
-			//	CommunityGame.entities.get(i).getIAPath().drawPath(g);
+			if(CommunityGame.entities.get(i).getIAPath() != null)
+				CommunityGame.entities.get(i).getIAPath().drawPath(g);
 		}
 	}
 	

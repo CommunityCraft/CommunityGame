@@ -1,5 +1,7 @@
 package net.xemnias.client;
 
+import org.newdawn.slick.Graphics;
+
 public class IAPathManager extends IAManager
 {
 	public Location originalLocation;
@@ -80,5 +82,10 @@ public class IAPathManager extends IAManager
 				en.y-= (int) (100 * delta / 1000f);
 			}
 		}
+	}
+
+	public void drawPath(Graphics g) 
+	{
+		g.drawLine(originalLocation.x, originalLocation.y, futurLocation.x, futurLocation.y);
 	}
 }

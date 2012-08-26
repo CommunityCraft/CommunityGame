@@ -28,14 +28,14 @@ public class Block
 		CommunityGame.blockList.add(this);
 	}
 
-	public static Block dirt = new Block(0, "Terre");
-	public static Block leftGrass = new Block(1, "Herbe");
-	public static Block grass = new Block(2, "Herbe");
-	public static Block rightGrass = new Block(3, "Herbe");
-	public static Block woodenBox = new Block(4, "Caisse en bois");
-	public static Block littlePebble = new Block(5, "Petit cailloux");
-	public static Block redFlower = new Block(6, "Fleurs rouge");
-	public static Block yellowFlower = new Block(7, "Fleurs jaune");
+	public static BlockDirt dirt = new BlockDirt(0, "Terre");
+	public static BlockLeftGrass leftGrass = new BlockLeftGrass(1, "Herbe");
+	public static BlockGrass grass = new BlockGrass(2, "Herbe");
+	public static BlockRightGrass rightGrass = new BlockRightGrass(3, "Herbe");
+	public static BlockWoodenBox woodenBox = new BlockWoodenBox(4, "Caisse en bois");
+	public static BlockLittlePebble littlePebble = new BlockLittlePebble(5, "Petit cailloux");
+	public static BlockRedFlower redFlower = new BlockRedFlower(6, "Fleurs rouge");
+	public static BlockYellowFlower yellowFlower = new BlockYellowFlower(7, "Fleurs jaune");
 	
 	public void draw(float xPos, float yPos, Graphics g)
 	{

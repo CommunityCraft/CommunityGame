@@ -3,7 +3,6 @@ package net.xemnias.client;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-
 public class ScreenMainMenu extends ScreenGui
 {
 	
@@ -22,7 +21,7 @@ public class ScreenMainMenu extends ScreenGui
 	{
 		updateButton(gc, parent, delta);
 		if(gc.getInput().isMousePressed(0))
-			checkOnClick(gc, parent);	
+			checkOnClick(gc, parent);
 	}
 	
 	public void render(GameContainer gc, Graphics g, CommunityGame cc) 
