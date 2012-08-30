@@ -6,7 +6,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SpriteSheet;
 
-public class Entity
+public class Entity extends GameObject
 {
 	public int id;
 	public String Name;

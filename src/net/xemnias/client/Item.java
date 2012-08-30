@@ -3,14 +3,15 @@ package net.xemnias.client;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
-public class Item 
+public class Item extends GameObject
 {
 	private int coordinateX;
 	private int coordinateY;
 	private Image skin;
 	public String Name;
 	public int id;
-	SpriteSheet itemSheet;
+	public SpriteSheet itemSheet;
+	
 	
 	
 	public Item(int i, int xCoor, int yCoor, String name)
@@ -50,6 +51,10 @@ public class Item
 		return null;
 	}
 	
+	public void renderItem(Item item)
+	{
+		item.skin.draw(xPos, yPos);
+	}
 	
 	public void drawAsIcon(float x, float y, Graphics g)
 	{

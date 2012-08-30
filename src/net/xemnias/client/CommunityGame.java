@@ -40,7 +40,7 @@ public class CommunityGame extends StateBasedGame
 		AnimationList.init();
 		
 		currentScreen = new Screen(this);
-		currentScreen.currentGuiState = new ScreenInitGame(this);
+		currentScreen.currentGuiState = new ScreenMainMenu(this);
 		
 		world = new Map("test.map", this);
 		world.load();
