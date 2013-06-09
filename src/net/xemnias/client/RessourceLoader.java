@@ -26,8 +26,9 @@ public class RessourceLoader
             {
                 for ( int i = 0; i < flist.length; i++) 
                 {
-                	imageList.add(i, new Image(flist[i].getPath()));
-                	imageList.get(i).setName(flist[i].getName());
+	                	imageList.add(i, new Image(flist[i].getPath()));
+	                	imageList.get(i).setName(flist[i].getName());
+                	
                 } 
             }
             else 
