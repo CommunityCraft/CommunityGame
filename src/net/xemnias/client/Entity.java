@@ -16,6 +16,10 @@ public class Entity extends GameObject
 	
 	protected float x, y;
 	protected int life = 100;
+	protected int mana = 100;
+	protected int xp = 0;
+	protected int nextLevel = 100;
+	protected int level = 1;
 	
 	protected Animation animation;
 
@@ -76,6 +80,11 @@ public class Entity extends GameObject
 
 	public float getX() {
 		return x;
+	}
+	
+	public int getNextLevel()
+	{
+		return nextLevel;
 	}
 
 	public void setX(float x) {

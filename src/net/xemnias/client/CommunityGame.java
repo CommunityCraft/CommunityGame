@@ -108,7 +108,7 @@ public class CommunityGame extends StateBasedGame
 
 	public static void main(String[] args) throws SlickException
 	{
-		CommunityGame game = new CommunityGame("CommunityGame - alpha", 840, 580);
+		CommunityGame game = new CommunityGame("CommunityGame - alpha", 840, 516);
 		AppGameContainer app = new AppGameContainer(game);
 		app.setDisplayMode(width, height, false);
 		app.start();

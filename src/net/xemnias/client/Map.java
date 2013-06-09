@@ -40,24 +40,11 @@ public class Map
       		 for(int o = 0; o < 34; o++)
       		 {
       			 map[i][o] = (char)Sreader.read();
-      			 char tile = (char) map[i][o];
+      			 int tile = Character.getNumericValue((char) map[i][o]);
       			 
-      			 if(tile == '0')
+      			 if(tile != 0)
       			 {
-
-      			 }
-      			 
-      			 if(tile == '1')
-      			 {
-      				 tiles.add(new Tile(o*32, i*32, 32, 32, Block.dirt.getBlockById(1)));
-      			 }
-      			 if(tile == '2')
-      			 {
-      				tiles.add(new Tile(o*32, i*32, 32, 32, Block.dirt.getBlockById(2)));
-      			 }
-      			 if(tile == '3')
-      			 {
-      				 tiles.add(new Tile(o*32, i*32, 32, 32, Block.dirt.getBlockById(3)));
+      				 tiles.add(new Tile(o*32, i*32, 32, 32, Block.dirt.getBlockById(tile)));
       			 }
       		 }
         }

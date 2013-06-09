@@ -38,5 +38,17 @@ public class EntityPlayer extends Entity
 			animation = AnimationList.playerRunningRight;
 			turn = 1;
 		}
+		
+		if(cc.getContainer().getInput().isKeyDown(Input.KEY_T))
+		{
+			if(!(xp >= nextLevel))
+				xp ++;
+			else
+			{
+				xp = 0;
+				nextLevel += 110;
+				level++;
+			}
+		}
 	}
 }

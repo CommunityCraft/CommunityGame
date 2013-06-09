@@ -7,6 +7,7 @@ import org.newdawn.slick.Input;
 public class ScreenGame extends Screen {
 
 	private GuiInventory inventory = new GuiInventory(parent);
+	private GuiBar playerBar = new GuiBar(parent);
 	private GuiCompomentPlayerInformation pInfo;
 	public ScreenGame(CommunityGame communityGame)
 	{
@@ -27,6 +28,8 @@ public class ScreenGame extends Screen {
 	{
 		if(gc.getInput().isKeyPressed(Input.KEY_E))
 			cc.showOrHideDialog(inventory);
+
+		playerBar.update(gc, cc, delta);
 		
 		cc.gde.updateEntity(cc, delta);
 		cc.gde.updateIAPath(delta);
