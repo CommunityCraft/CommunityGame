@@ -14,7 +14,7 @@ public class RenderEngine
 	
 	public RenderEngine(CommunityGame cc)
 	{
-		tiles = cc.world.tiles;
+		tiles = CommunityGame.world.tiles;
 		parent = cc;
 		camera = new View(this);
 	}
@@ -63,7 +63,7 @@ public class RenderEngine
 
 	public void renderCurrentMapBackGround() 
 	{
-		parent.world.getBackGround().draw(-500, 0);
+		CommunityGame.world.getBackGround().draw(-500, 0);
 	}
 	
 	

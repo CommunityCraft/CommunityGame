@@ -4,12 +4,16 @@ import org.newdawn.slick.Graphics;
 
 public class GDE implements Gestionary 
 {
+	Entity e = null;
 	public void updateEntity(CommunityGame cc, int delta) 
 	{
 		for(int i = 0; i < CommunityGame.entities.size(); i++)
-			CommunityGame.entities.get(i).update(cc, delta);
+		{
+			e = CommunityGame.entities.get(i);
+			e.update(cc, delta);
+			e.box.setBounds((int)e.x, (int)e.y, e.w, e.h);
+		}
 	}
-	
 	public void registerEntity(Entity en)
 	{
 		CommunityGame.entities.add(en);

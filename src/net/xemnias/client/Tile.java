@@ -2,12 +2,13 @@ package net.xemnias.client;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.geom.Rectangle;
 
 public class Tile
 {
 	private float xPos, yPos, width, height;
-	private boolean isBlock, isItem;
-	
+	public boolean isBlock, isItem;
+	public Rectangle box;
 	
 	private Item item;
 	private Block block;
@@ -21,6 +22,7 @@ public class Tile
 		width = w;
 		height = h;
 		block = blockP;
+		box = new Rectangle(i, j, w, h);
 	}
 	
 	public Tile(float i, float j, float w, float h,	Item itemP)
@@ -31,6 +33,7 @@ public class Tile
 		width = w;
 		height = h;
 		item = itemP;
+		box = new Rectangle(i, j, w, h);
 	}
 	
 	public Tile(int i, int j, int w, int h, Entity entityP) 
@@ -40,6 +43,7 @@ public class Tile
 		width = w;
 		height = h;
 		entity = entityP;
+		box = new Rectangle(i, j, w, h);
 	}
 
 	public void render(GameContainer gc, Graphics g)
@@ -48,6 +52,11 @@ public class Tile
 			item.drawAsIcon(xPos, yPos, g);
 		else if(block != null && isBlock)
 			block.draw(xPos, yPos, g);
+	}
+	
+	public Block getBlock()
+	{
+		return block;
 	}
 
 	public float getxPos() {

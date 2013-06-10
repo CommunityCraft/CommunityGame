@@ -5,16 +5,18 @@ import java.util.ArrayList;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SpriteSheet;
+import org.newdawn.slick.geom.Rectangle;
 
 public class Entity extends GameObject
 {
 	public int id;
 	public String Name;
 	public boolean Passive;
+	public Rectangle box;
 
 	public int turn = 0;
 	
-	protected float x, y;
+	protected float x, y, w, h;
 	protected int life = 100;
 	protected int mana = 100;
 	protected int xp = 0;
@@ -32,6 +34,7 @@ public class Entity extends GameObject
 		id = i;
 		Name = name;
 		Passive = att;
+		box = new Rectangle(x, y, w, h);
 	}
 	
 	protected void update(CommunityGame cc, int delta)
@@ -54,6 +57,16 @@ public class Entity extends GameObject
 	{
 		if(entity.animation != null)
 		entity.animation.draw(entity.getX(), entity.getY());
+	}
+	
+	protected void collideWithEntity(Entity e)
+	{
+		
+	}
+
+	protected void collideWithTile(Tile t)
+	{
+		
 	}
 	
 	public void setAnimationSprite(Image imageByName)

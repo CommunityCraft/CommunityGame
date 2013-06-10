@@ -13,7 +13,7 @@ public class CommunityGame extends StateBasedGame
 	private static int height, width;
 	private Screen currentScreen;
 	public RenderEngine render;
-	public Map world;
+	public static Map world;
 	public GDE gde = new GDE();
 	public static RessourceLoader loader;
 	
@@ -35,7 +35,7 @@ public class CommunityGame extends StateBasedGame
 	private void initGame(GameContainer arg0) throws SlickException, IOException
 	{
 		loader = new RessourceLoader();
-		loader.bindImageDirectoryToList("data/tiles/");
+		loader.bindImageDirectoryToList("old data/");
 		
 		AnimationList.init();
 		

@@ -8,6 +8,7 @@ public class Block
 	public int id;
 	public Image sprite;
 	public String Name;
+	public boolean collision = false;
 	
 	public Block(int i, String name)
 	{
