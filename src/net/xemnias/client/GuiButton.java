@@ -9,6 +9,7 @@ public class GuiButton extends GuiCompoment
 {
 	protected int id;
 	private String displayString;
+	private Circle circle;
 	
 	public GuiButton(int i, float xPos, float yPos, String str)
 	{
@@ -30,6 +31,14 @@ public class GuiButton extends GuiCompoment
 		y = yPos;
 		width = w;
 		height = h;
+	}
+	
+	public GuiButton(int i, float xP, float yP, int ray)
+	{
+		id = i;
+		x = xP;
+		y = yP;
+		circle = new Circle(xP, yP, ray);
 	}
 	
 	protected void render(GameContainer gc, CommunityGame cc, Graphics g)
@@ -63,6 +72,22 @@ public class GuiButton extends GuiCompoment
 		if(input.getMouseX() > x && input.getMouseX() < x + width && input.getMouseY() > y && input.getMouseY() < y + height)
 			return true;
 		return false;
+	}
+	
+
+	public boolean isMouseOnIt(float mouseX, float mouseY)
+	{
+		if( Math.abs(circle.getxCenter() - mouseX) <= (1/2 + circle.getRayon()))
+		{
+			if( Math.abs(circle.getyCenter() - mouseY) <= (1/2 + circle.getRayon()))
+				return true;
+		}
+			return false;
+	}
+	
+	public Circle getCircle()
+	{
+		return circle;
 	}
 	
 }

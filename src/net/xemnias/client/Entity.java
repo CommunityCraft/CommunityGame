@@ -35,6 +35,17 @@ public class Entity extends GameObject
 		Name = name;
 		Passive = att;
 		box = new Rectangle(x, y, w, h);
+		
+		
+		for(int z = 0; z < CommunityGame.loadedEntities.size(); z++)
+		{
+			if(i == CommunityGame.loadedEntities.get(z).id)
+			{
+				System.err.println("ID entity similaire : "+i);
+				System.exit(0);
+			}
+		}
+		CommunityGame.loadedEntities.add(this);
 	}
 	
 	protected void update(CommunityGame cc, int delta)
@@ -67,6 +78,16 @@ public class Entity extends GameObject
 	protected void collideWithTile(Tile t)
 	{
 		
+	}
+	
+	public Entity getEntityById(int id)
+	{
+		for(int i = 0; i < CommunityGame.loadedEntities.size(); i++)
+		{
+			if(CommunityGame.loadedEntities.get(i).id == id)
+				return CommunityGame.loadedEntities.get(i);
+		}
+		return null;
 	}
 	
 	public void setAnimationSprite(Image imageByName)

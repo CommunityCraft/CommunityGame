@@ -20,7 +20,7 @@ public class ScreenMainMenu extends ScreenGui
 	public void update(GameContainer gc, int delta, CommunityGame cc) 
 	{
 		updateButton(gc, parent, delta);
-		if(gc.getInput().isMousePressed(0))
+		if(cc.MOUSE_BUTTON_0)
 			checkOnClick(gc, parent);
 	}
 	
@@ -35,7 +35,8 @@ public class ScreenMainMenu extends ScreenGui
 	{
 		if(id == 0)
 		{
-			parent.switchGuiTo(new ScreenGame(parent));
+			cc.screenGame = new ScreenGame(parent);
+			parent.switchGuiTo(cc.screenGame);
 		}
 	}
 }

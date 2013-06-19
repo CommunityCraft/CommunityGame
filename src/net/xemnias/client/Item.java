@@ -22,7 +22,6 @@ public class Item extends GameObject
 		id = i;
 		Name = name;
 		skin = itemSheet.getSpriteAt(xCoor, yCoor);
-
 		
 		
 		for(int z = 0; z < CommunityGame.itemList.size(); z++)

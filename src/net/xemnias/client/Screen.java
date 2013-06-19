@@ -51,22 +51,39 @@ public class Screen extends BasicGameState
 
 	public void update(GameContainer arg0, StateBasedGame arg1, int arg2) throws SlickException
 	{
+		
+		doTheControlTest(arg0);
+		
 		if(!isGui)
 		{
-		currentstate.update(arg0, arg2, parent);
-		if(isDialogOpen)
-		{
-			dialog.update(arg0,parent,arg2);
-			dialog.updateButton(arg0, parent, arg2);
-			
-			if(arg0.getInput().isMousePressed(0))
-				dialog.checkOnClick(arg0, parent);
-		}
+			currentstate.update(arg0, arg2, parent);
+			if(isDialogOpen)
+			{
+				dialog.update(arg0,parent,arg2);
+				dialog.updateButton(arg0, parent, arg2);
+				
+				if(parent.MOUSE_BUTTON_0)
+					dialog.checkOnClick(arg0, parent);
+			}
 		}
 		if(isGui)
 		{
 			currentGuiState.update(arg0, arg2, parent);
 		}
+	}
+
+	private void doTheControlTest(GameContainer arg0) 
+	{
+		if(arg0.getInput().isMousePressed(0))
+			parent.MOUSE_BUTTON_0 = true;
+		else
+			parent.MOUSE_BUTTON_0 = false;
+		
+
+		if(arg0.getInput().isMousePressed(1))
+			parent.MOUSE_BUTTON_1 = true;
+		else
+			parent.MOUSE_BUTTON_1 = false;
 	}
 
 	public int getID() 

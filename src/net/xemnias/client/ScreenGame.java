@@ -6,18 +6,15 @@ import org.newdawn.slick.Input;
 
 public class ScreenGame extends Screen {
 
-	private GuiInventory inventory = new GuiInventory(parent);
-	private GuiBar playerBar = new GuiBar(parent);
+	public GuiInventory inventory = new GuiInventory(parent);
+	public GuiBar playerBar = new GuiBar(parent);
 	private GuiCompomentPlayerInformation pInfo;
+	public static float X_TRANSLATE_GRAPHICS;
+	
 	public ScreenGame(CommunityGame communityGame)
 	{
 		super(communityGame);
 		pInfo = new GuiCompomentPlayerInformation(communityGame);
-		parent.gde.registerEntity(Entity.entityPlayer);
-		parent.gde.registerEntity(Entity.corruptedSoul);
-		Entity.corruptedSoul.setX(75);
-		Entity.corruptedSoul.setY(215);
-		Entity.corruptedSoul.setIAPath(new IAPathManager(new Location(Entity.corruptedSoul.x, Entity.corruptedSoul.y), new Location(250, 215), true));
 	}
 	
 	public void preLoad(GameContainer gc, CommunityGame cc)
@@ -26,6 +23,7 @@ public class ScreenGame extends Screen {
 	}
 	public void update(GameContainer gc, int delta, CommunityGame cc)
 	{
+		cc.render.getCamera().setxPos(-X_TRANSLATE_GRAPHICS);
 		if(gc.getInput().isKeyPressed(Input.KEY_E))
 			cc.showOrHideDialog(inventory);
 
@@ -38,10 +36,22 @@ public class ScreenGame extends Screen {
 	public void render(GameContainer gc, Graphics g, CommunityGame cc)
 	{
 		cc.render.renderCurrentMapBackGround();
+		pInfo.render(gc, cc, g);
+		playerBar.render(gc, cc, g);
+		
+		g.translate(X_TRANSLATE_GRAPHICS, 0);
+		g.pushTransform();
+		
 		cc.render.renderTiles(gc, g);
 		cc.render.renderEntities();
 		cc.gde.renderAdditionalStuff(g, cc);
-		pInfo.render(gc, cc, g);
 		cc.gde.drawIAPath(g);
+		
+        
+	}
+	
+	public void openInventory()
+	{
+		parent.showOrHideDialog(inventory);
 	}
 }

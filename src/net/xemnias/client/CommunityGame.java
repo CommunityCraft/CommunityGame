@@ -15,11 +15,18 @@ public class CommunityGame extends StateBasedGame
 	public RenderEngine render;
 	public static Map world;
 	public GDE gde = new GDE();
+	public ScreenGame screenGame;
 	public static RessourceLoader loader;
 	
 	public static ArrayList<Item> itemList;
 	public static ArrayList<Block> blockList;
 	public static ArrayList<Entity> entities;
+	public static ArrayList<Entity> loadedEntities;
+	
+	public static int PLAYER_RAM_ADRESS;
+	
+	public boolean MOUSE_BUTTON_0;
+	public boolean MOUSE_BUTTON_1;
 	
 	public CommunityGame(String name, int i, int j) throws SlickException
 	{
@@ -29,6 +36,7 @@ public class CommunityGame extends StateBasedGame
 		itemList = new ArrayList<Item>();
 		blockList = new ArrayList<Block>();
 		entities = new ArrayList<Entity>();
+		loadedEntities = new ArrayList<Entity>();
 	}
 
 
@@ -39,12 +47,14 @@ public class CommunityGame extends StateBasedGame
 		
 		AnimationList.init();
 		
+		world = new Map("lvlTEST.map", this);
+		world.load();
+		world.buildMap();
+		
 		currentScreen = new Screen(this);
 		currentScreen.currentGuiState = new ScreenMainMenu(this);
 		
-		world = new Map("test.map", this);
-		world.load();
-		world.buildMap();
+
 		
 		world.bindBackGround(new BackGround(loader.getBackgroundByName("test.png")));
 		
@@ -108,7 +118,7 @@ public class CommunityGame extends StateBasedGame
 
 	public static void main(String[] args) throws SlickException
 	{
-		CommunityGame game = new CommunityGame("CommunityGame - alpha", 840, 516);
+		CommunityGame game = new CommunityGame("CommunityGame - alpha", 832, 580);
 		AppGameContainer app = new AppGameContainer(game);
 		app.setDisplayMode(width, height, false);
 		app.start();
@@ -147,6 +157,25 @@ public class CommunityGame extends StateBasedGame
 		currentScreen.currentstate = null;
 		
 		currentScreen.currentGuiState.preLoad(getContainer(), this);
+	}
+
+
+	public EntityPlayer getPlayer() 
+	{
+		return (EntityPlayer) entities.get(PLAYER_RAM_ADRESS);
+	}
+	
+	public void mouseWheelMoved(int change)
+	{
+		if (change < 0) {
+			screenGame.inventory.scrollSelectionBarDown(this);
+		} 
+		if (change > 0) {
+			screenGame.inventory.scrollSelectionBarUp(this);
+		}
+		
+		if(getPlayer().getSelectedItem() != null)
+			screenGame.playerBar.nameDrawed = false;
 	}
 
 }

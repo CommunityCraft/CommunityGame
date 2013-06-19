@@ -9,6 +9,7 @@ public class Block
 	public Image sprite;
 	public String Name;
 	public boolean collision = false;
+	private Tile parentTile;
 	
 	public Block(int i, String name)
 	{
@@ -37,6 +38,7 @@ public class Block
 	public static BlockLittlePebble littlePebble = new BlockLittlePebble(5, "Petit cailloux");
 	public static BlockRedFlower redFlower = new BlockRedFlower(6, "Fleurs rouge");
 	public static BlockYellowFlower yellowFlower = new BlockYellowFlower(7, "Fleurs jaune");
+	public static BlockFountain fountain = new BlockFountain(24, "Fontaine");
 	
 	public void draw(float xPos, float yPos, Graphics g)
 	{
@@ -51,6 +53,41 @@ public class Block
 				return CommunityGame.blockList.get(i);
 		}
 		return null;
+	}
+	
+	public Tile getTileUpTo(Block b)
+	{
+		if(b.getParentTile().isBlock)
+		{
+			Tile t = b.getParentTile();
+			return getTileAt(t.getxPos(), t.getyPos()-32);
+		}
+		
+		return null;
+	}
+
+	
+	
+	
+	private Tile getTileAt(float x, float y) 
+	{
+		for(int i = 0; i < CommunityGame.world.tiles.size(); i++)
+		{
+			if(CommunityGame.world.tiles.get(i).getxPos() == x && CommunityGame.world.tiles.get(i).getyPos() == y)
+			{
+				return CommunityGame.world.tiles.get(i);
+			}
+		}
+		
+		return null;
+	}
+
+	public Tile getParentTile() {
+		return parentTile;
+	}
+
+	public void setParentTile(Tile parentTile) {
+		this.parentTile = parentTile;
 	}
 
 }

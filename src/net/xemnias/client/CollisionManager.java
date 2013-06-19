@@ -11,9 +11,12 @@ public class CollisionManager
 		{
 			if(CommunityGame.world.tiles.get(i).isBlock)
 			{
-				Tile tile = CommunityGame.world.tiles.get(i);
-				if(tile.box.intersects(rect))
-					return tile;
+				if(CommunityGame.world.tiles.get(i).getBlock() != null && CommunityGame.world.tiles.get(i).getBlock().collision)
+				{
+					Tile tile = CommunityGame.world.tiles.get(i);
+					if(tile.box.intersects(rect))
+						return tile;
+				}
 			}
 		}
 		return null;

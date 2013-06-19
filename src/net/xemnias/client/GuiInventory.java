@@ -52,23 +52,49 @@ public class GuiInventory extends GuiContainer
 
 	public void update(GameContainer gc, CommunityGame sbg, int delta)
 	{
-		if(gc.getInput().isMousePressed(0))
+		
+		if(sbg.MOUSE_BUTTON_0)
 		{
-			clickOnCase(whatCaseClick(gc));
+			ItemSlot s = whatCaseClick(gc);
+			clickOnCase(s);
+			
+			equipedItem = equipeSlots.get(selectedCase).getItem();
+
+			sbg.getPlayer().setSelectedItem(equipedItem);
+			if(equipedItem != null)
+			{
+				sbg.screenGame.playerBar.nameDrawed=false;
+			}
 		}
 		
-		if(gc.getInput().isMousePressed(1))
-		{
-			if(selectedCase < 6)
-				selectedCase++;
-			else
-				selectedCase =0;
-
+	}
+	
+	public void scrollSelectionBarDown(CommunityGame sbg)
+	{
+			selectedCase--;
+			if(selectedCase < 0)
+				selectedCase = 6;
+			
 			equipedItem = equipeSlots.get(selectedCase).getItem();
 			if(equipedItem != null)
-			System.out.println(equipedItem.Name);
-		}
-		
+			{
+				System.out.println("Équipé de : " + equipedItem.Name);
+			}
+			sbg.getPlayer().setSelectedItem(equipedItem);
+	}
+	
+	public void scrollSelectionBarUp(CommunityGame sbg)
+	{
+			selectedCase++;
+			if(selectedCase > 6)
+				selectedCase = 0;
+			
+			equipedItem = equipeSlots.get(selectedCase).getItem();
+			if(equipedItem != null)
+			{
+				System.out.println("Équipé de : " + equipedItem.Name);
+			}
+			sbg.getPlayer().setSelectedItem(equipedItem);
 	}
 
 	public void render(GameContainer gc, CommunityGame sbg, Graphics g) 

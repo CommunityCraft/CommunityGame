@@ -17,6 +17,7 @@ public class GDE implements Gestionary
 	public void registerEntity(Entity en)
 	{
 		CommunityGame.entities.add(en);
+		CommunityGame.PLAYER_RAM_ADRESS = CommunityGame.entities.indexOf(en);
 	}
 	
 	public void updateIAPath(int delta)

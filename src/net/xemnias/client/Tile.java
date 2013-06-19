@@ -44,6 +44,8 @@ public class Tile
 		height = h;
 		entity = entityP;
 		box = new Rectangle(i, j, w, h);
+		entity.setParentTile(this);
+		CommunityGame.entities.add(entity);
 	}
 
 	public void render(GameContainer gc, Graphics g)

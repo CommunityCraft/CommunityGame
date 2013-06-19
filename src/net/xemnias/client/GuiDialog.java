@@ -44,6 +44,12 @@ public abstract class GuiDialog extends Gui
 			{
 				actionPerformed(control.get(i).id, cc);
 			}
+			
+
+			else if(control.get(i).isMouseOnIt(gc.getInput().getMouseX(), gc.getInput().getMouseY()))
+			{
+				actionPerformed(control.get(i).id, cc);
+			}
 		}
 	}
 }
