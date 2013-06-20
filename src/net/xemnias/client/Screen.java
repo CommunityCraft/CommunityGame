@@ -37,16 +37,14 @@ public class Screen extends BasicGameState
 		if(!isGui)
 		{
 			currentstate.render(arg0, arg2, parent);
-			if(isDialogOpen)
-			{
-				dialog.render(arg0,parent, arg2);
-				dialog.drawButton(arg2, arg0, parent);
-			}
+			renderDialog(arg0, arg2);
 		}
 		if(isGui)
 		{
 			currentGuiState.render(arg0, arg2, parent);
 		}
+		arg2.translate(ScreenGame.X_TRANSLATE_GRAPHICS, 0);
+		arg2.pushTransform();
 	}
 
 	public void update(GameContainer arg0, StateBasedGame arg1, int arg2) throws SlickException
@@ -74,6 +72,9 @@ public class Screen extends BasicGameState
 
 	private void doTheControlTest(GameContainer arg0) 
 	{
+		parent.MOUSE_X = arg0.getInput().getMouseX();
+		parent.MOUSE_Y = arg0.getInput().getMouseY();
+		
 		if(arg0.getInput().isMousePressed(0))
 			parent.MOUSE_BUTTON_0 = true;
 		else
@@ -84,6 +85,16 @@ public class Screen extends BasicGameState
 			parent.MOUSE_BUTTON_1 = true;
 		else
 			parent.MOUSE_BUTTON_1 = false;
+	}
+	
+	protected void renderDialog(GameContainer arg0, Graphics arg2)
+	{
+
+		if(isDialogOpen)
+		{
+			dialog.render(arg0,parent, arg2);
+			dialog.drawButton(arg2, arg0, parent);
+		}
 	}
 
 	public int getID() 

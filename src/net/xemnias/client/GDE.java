@@ -12,12 +12,19 @@ public class GDE implements Gestionary
 			e = CommunityGame.entities.get(i);
 			e.update(cc, delta);
 			e.box.setBounds((int)e.x, (int)e.y, e.w, e.h);
+			
+			if(e.life <= 0)
+			{
+				e.die(cc.getPlayer());
+				CommunityGame.entities.remove(e);
+			}
 		}
 	}
 	public void registerEntity(Entity en)
 	{
 		CommunityGame.entities.add(en);
-		CommunityGame.PLAYER_RAM_ADRESS = CommunityGame.entities.indexOf(en);
+		if(en instanceof EntityPlayer)
+			CommunityGame.PLAYER_RAM_ADRESS = CommunityGame.entities.indexOf(en);
 	}
 	
 	public void updateIAPath(int delta)

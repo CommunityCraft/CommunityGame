@@ -11,6 +11,8 @@ public class Item extends GameObject
 	public String Name;
 	public int id;
 	public SpriteSheet itemSheet;
+	public boolean isWeapon;
+	public int damage;
 	
 	
 	

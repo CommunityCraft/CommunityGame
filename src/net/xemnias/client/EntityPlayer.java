@@ -1,10 +1,5 @@
 package net.xemnias.client;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.Timer;
-
 import org.newdawn.slick.Input;
 import org.newdawn.slick.geom.Rectangle;
 
@@ -17,49 +12,100 @@ public class EntityPlayer extends Entity
 	private Rectangle right = new Rectangle(x+w-1, y+1, 1, h-2);
 	
 	public Tile collideTile = null;
-	public boolean isJumping = false;
-	private Timer timer = null;
+	public Entity collideEntity = null;
+	private boolean isJumping = false;
+	private boolean canJump = true;
+	private TimerMillis timer = null;
 	
 	private Item item;
 	public float gravityTimer;
+	private Attack attack;
 	
 	public EntityPlayer(int i, String name, boolean att)
 	{
 		super(i, name, att);
-		animation = AnimationList.playerStandingRight;
 		w = 32;
 		h = 62;
 		
-		timer = new Timer(256, new ActionListener()
+		init();
+	}
+		
+	private void init() 
+	{
+		animation = AnimationList.playerStandingRight;
+		attack = new Attack(200, 50, 30, AnimationList.attackRight);
+		timer = new TimerMillis(300, new Action()
 		{
 			
-			public void actionPerformed(ActionEvent e) 
+			public void actionPerformed() 
 			{
 				isJumping = false;
-				timer.stop();
 			}
 		});
-		
 	}
-	
-	public void collideWithTile(Tile t, int delta)
-	{
-		
-	}
-		
+
 	public void update(CommunityGame cc, int delta)
 	{
-		if(turn == 0)
-			animation = AnimationList.playerStandingLeft;
-		else if(turn == 1)
-			animation = AnimationList.playerStandingRight;
-		gravityTimer += delta/1000f;
+		updateAnimation();
+
 		move(cc, delta);
 		
 		translateMap(delta);
 		
+		toBetterUp(cc, delta);
+
+		jumpCheck(cc);
+
+		attack(cc);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	private void attack(CommunityGame cc) 
+	{
+		if(cc.MOUSE_BUTTON_0 && !attack.RUNNING && clickOnGame(cc))
+		{
+			attack.start(cc);
+			animation = attack.getAnimation();
+
+		}
+		if(attack.RUNNING && ! attack.TOUCH)
+		{
+			if((collideEntity = CollisionManager.checkCollisionEntity(this)) != null)
+			{
+				collideEntity.life -= attack.calculDamage(this);
+				attack.TOUCH = true;
+			}
+		}
+	}
+
+	private boolean clickOnGame(CommunityGame cc) 
+	{
 		
-		
+		return cc.MOUSE_X > 0 && cc.MOUSE_X < 832 && cc.MOUSE_Y>0 && cc.MOUSE_Y < 580-64;
+	}
+
+	private void jumpCheck(CommunityGame cc)
+	{
+		if(cc.getContainer().getInput().isKeyDown(Input.KEY_SPACE) && !isJumping && canJump)
+		{
+			isJumping = true;
+			timer.start();
+		}
+	}
+	
+	private void toBetterUp(CommunityGame cc, int delta) 
+	{
 		if(cc.getContainer().getInput().isKeyDown(Input.KEY_T))
 		{
 			if(!(xp >= nextLevel))
@@ -72,19 +118,22 @@ public class EntityPlayer extends Entity
 			}
 		}
 		
-		if(cc.getContainer().getInput().isKeyDown(Input.KEY_SPACE) && !timer.isRunning())
-		{
-			isJumping = true;
-			timer.start();
-		}
-		
-		
-		
 	}
 
-	
-	
-	
+	private void updateAnimation() 
+	{
+		if(turn == 0 && !attack.RUNNING)
+		{
+			animation = AnimationList.playerStandingLeft;
+			attack.setAnimation(AnimationList.attackLeft);
+		}
+		else if(turn == 1 && !attack.RUNNING)
+		{
+			animation = AnimationList.playerStandingRight;
+			attack.setAnimation(AnimationList.attackRight);
+		}
+	}
+
 	private void translateMap(int delta) 
 	{
 		if(x > -1*ScreenGame.X_TRANSLATE_GRAPHICS+832-320)
@@ -102,7 +151,7 @@ public class EntityPlayer extends Entity
 	private void move(CommunityGame cc, int delta) 
 	{
 		// ############################## MOVE ##############################
-
+		gravityTimer += delta/1000f;
 		
 		if(cc.getContainer().getInput().isKeyDown(Input.KEY_Z))
 		{
@@ -121,7 +170,9 @@ public class EntityPlayer extends Entity
 		if(cc.getContainer().getInput().isKeyDown(Input.KEY_Q))
 		{
 			x-= 100 * delta / 1000f;
-			animation = AnimationList.playerRunningLeft;
+			if(!attack.RUNNING)
+				animation = AnimationList.playerRunningLeft;
+				
 			turn = 0;
 			updateBoxesPos();
 			if((collideTile = CollisionManager.checkCollisionTile(left)) != null||x < 0)
@@ -132,7 +183,8 @@ public class EntityPlayer extends Entity
 		if(cc.getContainer().getInput().isKeyDown(Input.KEY_D))
 		{
 			x+= 100 * delta / 1000f;
-			animation = AnimationList.playerRunningRight;
+			if(!attack.RUNNING)
+				animation = AnimationList.playerRunningRight;
 			turn = 1;
 			updateBoxesPos();
 			if((collideTile = CollisionManager.checkCollisionTile(right)) != null)
@@ -149,26 +201,31 @@ public class EntityPlayer extends Entity
 		if(!isJumping)
 		{
 			y+= CommunityGame.world.GRAVITY_CONST*gravityTimer;
+			//animation = AnimationList.fallingRight;
 			updateBoxesPos();
 			if((collideTile = CollisionManager.checkCollisionTile(down)) != null)
 			{
+				updateAnimation();
 				y-= CommunityGame.world.GRAVITY_CONST*gravityTimer;
 				gravityTimer = 0;
-
+				canJump = true;
 			}
 		}
-		else 
+		else
 		{
-			y-= CommunityGame.world.GRAVITY_CONST*gravityTimer;
+			gravityTimer = 0;
+			canJump = false;
+			y-= 32*4 * delta / 1000f;;
 			updateBoxesPos();
 			if((collideTile = CollisionManager.checkCollisionTile(up)) != null)
 			{
-				y+= CommunityGame.world.GRAVITY_CONST*gravityTimer;
-
+				isJumping = false;
+				
+				
 			}
+
 		}
 		
-		System.out.println(CommunityGame.world.GRAVITY_CONST*gravityTimer);
 	}
 
 	private void updateBoxesPos()
@@ -187,5 +244,11 @@ public class EntityPlayer extends Entity
 	public Item getSelectedItem()
 	{
 		return item;
+	}
+
+	
+	public void addXp(int p)
+	{
+		xp += p;
 	}
 }

@@ -27,6 +27,8 @@ public class CommunityGame extends StateBasedGame
 	
 	public boolean MOUSE_BUTTON_0;
 	public boolean MOUSE_BUTTON_1;
+	public float MOUSE_X;
+	public float MOUSE_Y;
 	
 	public CommunityGame(String name, int i, int j) throws SlickException
 	{
@@ -36,6 +38,8 @@ public class CommunityGame extends StateBasedGame
 		itemList = new ArrayList<Item>();
 		blockList = new ArrayList<Block>();
 		entities = new ArrayList<Entity>();
+		
+		
 		loadedEntities = new ArrayList<Entity>();
 	}
 
@@ -97,6 +101,7 @@ public class CommunityGame extends StateBasedGame
 		{
 			currentScreen.dialog = g;
 			currentScreen.isDialogOpen = true;
+			screenGame.isDialogOpen = true;
 			return;
 		}
 		
@@ -106,6 +111,7 @@ public class CommunityGame extends StateBasedGame
 			{
 				currentScreen.isDialogOpen = false;
 				currentScreen.dialog = null;
+				screenGame.isDialogOpen = false;
 			}
 		}
 	}
@@ -162,7 +168,10 @@ public class CommunityGame extends StateBasedGame
 
 	public EntityPlayer getPlayer() 
 	{
-		return (EntityPlayer) entities.get(PLAYER_RAM_ADRESS);
+		for(int i = 0; i < entities.size(); i++)
+			if(entities.get(i) instanceof EntityPlayer)
+				return (EntityPlayer) entities.get(i);
+		return null;
 	}
 	
 	public void mouseWheelMoved(int change)

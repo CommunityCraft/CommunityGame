@@ -9,6 +9,8 @@ public class EntityCorruptedSoul extends Entity {
 	{
 		super(i, name, att);
 		animation = AnimationList.corruptedSoulStantingRight;
+		level  = 1;
+		xp = 10*level;
 	}
 
 	protected void render(CommunityGame cc, Graphics g)

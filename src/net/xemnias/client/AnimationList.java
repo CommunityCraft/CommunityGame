@@ -10,6 +10,10 @@ public class AnimationList
 	public static Animation playerRunningLeft;
 	public static Animation playerJumpingLeft;
 	public static Animation playerJumpingRight;
+	public static Animation attackRight;
+	public static Animation attackLeft;
+	public static Animation fallingRight;
+	public static Animation fallingLeft;
 
 	public static Animation corruptedSoulStantingRight;
 	
@@ -21,6 +25,10 @@ public class AnimationList
 		playerRunningLeft = new Animation(playerRunningLeftSprite(), 100);
 		playerJumpingRight = new Animation(playerJumpingRightSprite(), 70);
 		playerJumpingLeft = new Animation(playerJumpingLeftSprite(), 70);
+		attackRight = new Animation(playerAttackRight(), 100);
+		attackLeft = new Animation(playerAttackLeft(), 100);
+		fallingRight = new Animation(new Image[]{CommunityGame.loader.getAnimationByName("falling.png")}, 100);
+		fallingLeft = new Animation(new Image[]{fallingRight.getCurrentFrame()}, 100);
 		
 		corruptedSoulStantingRight = new Animation(corruptedSoulStandingRight(), 200);
 	}
@@ -94,6 +102,26 @@ public class AnimationList
 		for(int i = 0; i < playerRunningRight.getFrameCount(); i++)
 		{
 			img[i] = playerRunningRight.getImage(i).getFlippedCopy(true, false);
+		}
+		return img;
+	}
+	
+	private static Image[] playerAttackRight()
+	{
+		Image[] img = new Image[2];
+		
+		img[0] = CommunityGame.loader.getAnimationByName("attack.png").getSubImage(0, 0, 42, 66);
+		img[1] = CommunityGame.loader.getAnimationByName("attack.png").getSubImage(42, 0, 71, 66);
+		
+		return img;
+	}
+	
+	private static Image[] playerAttackLeft()
+	{
+		Image[] img = new Image[2];
+		for(int i = 0; i < attackRight.getFrameCount(); i++)
+		{
+			img[i] = attackRight.getImage(i).getFlippedCopy(true, false);
 		}
 		return img;
 	}

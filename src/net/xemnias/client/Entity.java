@@ -27,6 +27,7 @@ public class Entity extends GameObject
 
 	public static final EntityPlayer entityPlayer = new EntityPlayer(0, "Xemnias", false);
 	public static final EntityCorruptedSoul corruptedSoul = new EntityCorruptedSoul(11, "Soul", true);
+	
 	protected IAPathManager IAPath;
 	
 	public Entity(int i, String name, boolean att)
@@ -89,6 +90,12 @@ public class Entity extends GameObject
 		}
 		return null;
 	}
+	
+	public void die(EntityPlayer p) 
+	{
+		p.addXp(xp);
+	}
+	
 	
 	public void setAnimationSprite(Image imageByName)
 	{
