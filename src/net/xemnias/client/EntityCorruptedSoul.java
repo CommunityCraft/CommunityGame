@@ -11,6 +11,8 @@ public class EntityCorruptedSoul extends Entity {
 		animation = AnimationList.corruptedSoulStantingRight;
 		level  = 1;
 		xp = 10*level;
+		w = animation.getCurrentFrame().getWidth();
+		h = animation.getCurrentFrame().getHeight();
 	}
 
 	protected void render(CommunityGame cc, Graphics g)

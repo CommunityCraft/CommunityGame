@@ -25,7 +25,7 @@ public class Map
 	private List<?> mapDataBlock;
 	private List<?> mapDataItem;
 	private List<?> mapDataEntity;
-	public float GRAVITY_CONST = 1.7f;
+	public float GRAVITY_CONST = 2f;
 	
 	public Map(String name, CommunityGame parent) throws SlickException
 	{

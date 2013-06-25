@@ -66,7 +66,7 @@ public class GuiBar extends GuiCompoment
 			cc.getPlayer().getSelectedItem().drawAsIcon(400, 580-64+16, g);
 			if(time < 2000)
 			{
-				drawCenteredString(cc.getPlayer().getSelectedItem().Name, 416, 580-96, g);
+				drawCenteredStringWithPrefix(cc.getPlayer().getSelectedItem().getCompleteNameWithColor(), 416, 580-96, g);
 				nameDrawed = true;
 			}
 			else if(!nameDrawed)
@@ -78,7 +78,6 @@ public class GuiBar extends GuiCompoment
 
 	}
 
-	
 	public void actionPerformed(int id, CommunityGame cc) 
 	{
 		if(id == 0)

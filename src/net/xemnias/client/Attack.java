@@ -10,6 +10,7 @@ public class Attack
 	private TimerMillis timer = null;
 	private Animation animation;
 	private EntityPlayer p;
+	private Entity touchedEntity;
 	
 	public boolean RUNNING;
 	public boolean TOUCH;
@@ -29,16 +30,25 @@ public class Attack
 				RUNNING = false;
 				animation.stop();
 
-				p.box = new Rectangle(p.x, p.y, p.w, p.h);
+				//p.box = new Rectangle(p.x, p.y, p.w, p.h);
 				TOUCH = false;
+				if(touchedEntity != null)
+					touchedEntity.haveDamage(false);
 			}
 		});
 	}
 	
-	public void start(CommunityGame cc)
+	public void start(CommunityGame cc, int turn)
 	{
 		p = cc.getPlayer();
-		p.box = new Rectangle(p.x, p.y, p.w+distance, p.h);
+		if(turn == 0)
+		{
+			p.box = new Rectangle(p.x-distance, p.y, p.w, p.h);
+		}
+		if(turn == 1)
+		{
+			p.box = new Rectangle(p.x+distance, p.y, p.w, p.h);
+		}
 		RUNNING = true;
 		timer.start();
 		animation.setCurrentFrame(0);
@@ -88,6 +98,11 @@ public class Attack
 
 	public void setAnimation(Animation animation) {
 		this.animation = animation;
+	}
+
+	public void setTouchedEntity(Entity collideEntity) 
+	{
+		touchedEntity = collideEntity;
 	}
 
 }

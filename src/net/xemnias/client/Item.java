@@ -9,10 +9,23 @@ public class Item extends GameObject
 	private int coordinateY;
 	private Image skin;
 	public String Name;
+	public String sufix = "";
+	public String prefix = "";
+	protected String colorHexa = "";
 	public int id;
 	public SpriteSheet itemSheet;
-	public boolean isWeapon;
+	private ItemSlot parentSlot;
+	
+	public boolean isMagic = false;
+	
+	public EnchantementType magicType;
+	
+	public boolean isWeapon = false;
+	public boolean isArmor = false;
+	public boolean isOther = false;
 	public int damage;
+	public int armor;
+	public int  magicPower;
 	
 	
 	
@@ -37,9 +50,9 @@ public class Item extends GameObject
 		CommunityGame.itemList.add(this);
 	}
 	
-	public static final ItemIronSword ironSword = new ItemIronSword(0, 0, 0, "Épée en fer");
-	public static final ItemIronHammer ironHammer = new ItemIronHammer(1, 1, 0, "Marteau en fer");
-	public static final ItemLittleKey key = new ItemLittleKey(2, 2, 0, "Petite clé");
+	public static final ItemIronSword ironSword = new ItemIronSword(0, 0, 0, "Épée");
+	public static final ItemIronHammer ironHammer = new ItemIronHammer(1, 1, 0, "Marteau");
+	public static final ItemLittleKey key = new ItemLittleKey(2, 2, 0, "clé");
 	
 
 	public Item getItemById(int id)
@@ -94,5 +107,26 @@ public class Item extends GameObject
 	public void getInitializeMessage()
 	{
 		System.out.println("Item ok");
+	}
+
+	public ItemSlot getParentSlot() {
+		return parentSlot;
+	}
+
+	public void setParentSlot(ItemSlot parentSlot) 
+	{
+		this.parentSlot = parentSlot;
+	}
+	
+	public String getCompleteName()
+	{
+		if(!prefix.isEmpty())
+			Name.toLowerCase();
+		return prefix + Name + sufix;
+	}
+
+	public String getCompleteNameWithColor() 
+	{
+		return colorHexa+getCompleteName();
 	}
 }

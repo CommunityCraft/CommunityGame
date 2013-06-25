@@ -13,6 +13,8 @@ public class Entity extends GameObject
 	public String Name;
 	public boolean Passive;
 	public Rectangle box;
+	private boolean haveDamage;
+	
 
 	public int turn = 0;
 	
@@ -68,7 +70,12 @@ public class Entity extends GameObject
 	public void renderEntity(Entity entity)
 	{
 		if(entity.animation != null)
-		entity.animation.draw(entity.getX(), entity.getY());
+		{
+			if(!haveDamage)
+				entity.animation.draw(entity.getX(), entity.getY());
+			else
+				entity.animation.draw(entity.getX(), entity.getY(), CommunityColor.redAlpha095);
+		}
 	}
 	
 	protected void collideWithEntity(Entity e)
@@ -96,6 +103,11 @@ public class Entity extends GameObject
 		p.addXp(xp);
 	}
 	
+
+	public void haveDamage(boolean bool)
+	{
+		haveDamage = bool;
+	}
 	
 	public void setAnimationSprite(Image imageByName)
 	{
@@ -153,5 +165,10 @@ public class Entity extends GameObject
 		setX(tile.getxPos());
 		setY(tile.getyPos());
 	}
+
+	public boolean isDamaged() {
+		return haveDamage;
+	}
+
 	
 }

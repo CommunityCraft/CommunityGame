@@ -44,7 +44,7 @@ public class ScreenGame extends Screen {
 		g.pushTransform();
 		
 		cc.render.renderTiles(gc, g);
-		cc.render.renderEntities();
+		cc.render.renderEntities(g);
 		cc.gde.renderAdditionalStuff(g, cc);
 		cc.gde.drawIAPath(g);
 		
@@ -57,6 +57,8 @@ public class ScreenGame extends Screen {
 	
 	public void openInventory()
 	{
+
+		inventory.close();
 		parent.showOrHideDialog(inventory);
 	}
 }

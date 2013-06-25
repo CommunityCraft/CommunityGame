@@ -46,6 +46,7 @@ public class CommunityGame extends StateBasedGame
 
 	private void initGame(GameContainer arg0) throws SlickException, IOException
 	{
+		CommunityColor.init();
 		loader = new RessourceLoader();
 		loader.bindImageDirectoryToList("old data/");
 		

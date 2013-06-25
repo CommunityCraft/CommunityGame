@@ -6,6 +6,11 @@ public class ItemIronSword extends Item
 	{
 		super(i, xCoor, yCoor, name);
 		isWeapon = true;
-		damage = 40;
+		damage  = 40;
+		magicType = EnchantementType.ELEMENTAL;
+		magicPower = 10;
+		isMagic = true;
+		sufix = " en fer élémentaire";
+		colorHexa = "0xFFDA23";
 	}
 }

@@ -7,6 +7,7 @@ public class ItemIronHammer extends Item {
 		super(i, xCoor, yCoor, name);
 		isWeapon = true;
 		damage = 50;
+		sufix = " en fer";
 	}
 
 

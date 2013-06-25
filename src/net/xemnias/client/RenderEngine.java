@@ -53,7 +53,7 @@ public class RenderEngine
 		return camera;
 	}
 
-	public void renderEntities() 
+	public void renderEntities(Graphics g) 
 	{
 		for(int i = 0; i < CommunityGame.entities.size(); i++)
 		{

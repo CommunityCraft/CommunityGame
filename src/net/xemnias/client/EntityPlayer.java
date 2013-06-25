@@ -69,21 +69,21 @@ public class EntityPlayer extends Entity
 	
 	
 	
-	
-	
 	private void attack(CommunityGame cc) 
 	{
 		if(cc.MOUSE_BUTTON_0 && !attack.RUNNING && clickOnGame(cc))
 		{
-			attack.start(cc);
+			attack.start(cc, turn);
 			animation = attack.getAnimation();
 
 		}
-		if(attack.RUNNING && ! attack.TOUCH)
+		if(attack.RUNNING && !attack.TOUCH)
 		{
 			if((collideEntity = CollisionManager.checkCollisionEntity(this)) != null)
 			{
 				collideEntity.life -= attack.calculDamage(this);
+				collideEntity.haveDamage(true);
+				attack.setTouchedEntity(collideEntity);
 				attack.TOUCH = true;
 			}
 		}
@@ -137,13 +137,13 @@ public class EntityPlayer extends Entity
 	private void translateMap(int delta) 
 	{
 		if(x > -1*ScreenGame.X_TRANSLATE_GRAPHICS+832-320)
-			ScreenGame.X_TRANSLATE_GRAPHICS--;
+			ScreenGame.X_TRANSLATE_GRAPHICS-= 100 * delta / 1000f;
 		if(ScreenGame.X_TRANSLATE_GRAPHICS !=0)
 		{
 
 			if(x < -ScreenGame.X_TRANSLATE_GRAPHICS+32*10)
 			{
-				ScreenGame.X_TRANSLATE_GRAPHICS++;
+				ScreenGame.X_TRANSLATE_GRAPHICS+= 100 * delta / 1000f;
 			}
 		}
 	}

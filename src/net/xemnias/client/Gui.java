@@ -33,6 +33,17 @@ public class Gui
 		g.drawString(displayString2, x- g.getFont().getWidth(displayString2)/2, y-g.getFont().getHeight(displayString2)/2);
 	}
 	
+	public void drawCenteredStringWithPrefix(String displayString2, int x, int y, Graphics g) 
+	{
+		if(displayString2.startsWith("0x"))
+		{
+			g.setColor(Color.decode(displayString2.substring(0, 8)));
+			displayString2 = displayString2.substring(8);
+		}
+		g.drawString(displayString2, x- g.getFont().getWidth(displayString2)/2, y-g.getFont().getHeight(displayString2)/2);
+	}
+
+	
 	public void fillRectWithAlpha(int x, int y, int w, int h, Color c, float alpha, Graphics g)
 	{
 		Color cA = new Color(c.getRed(), c.getGreen(), c.getBlue(), alpha);

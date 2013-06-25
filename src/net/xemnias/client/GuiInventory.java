@@ -78,7 +78,7 @@ public class GuiInventory extends GuiContainer
 			equipedItem = equipeSlots.get(selectedCase).getItem();
 			if(equipedItem != null)
 			{
-				System.out.println("Équipé de : " + equipedItem.Name);
+				System.out.println("Équipé de : " + equipedItem.getCompleteName());
 			}
 			sbg.getPlayer().setSelectedItem(equipedItem);
 	}
@@ -92,7 +92,7 @@ public class GuiInventory extends GuiContainer
 			equipedItem = equipeSlots.get(selectedCase).getItem();
 			if(equipedItem != null)
 			{
-				System.out.println("Équipé de : " + equipedItem.Name);
+				System.out.println("Équipé de : " + equipedItem.getCompleteName());
 			}
 			sbg.getPlayer().setSelectedItem(equipedItem);
 	}
@@ -107,6 +107,9 @@ public class GuiInventory extends GuiContainer
 		drawRectWithColor(g, 340, 110, 80, 120, Color.black);
 		fillRectWithColor(g, 345, 115, 70, 110, Color.darkGray);
 		
+
+		
+		
 		for(int i = 0; i < slots.size(); i++)
 		{
 			if(!slots.get(i).isItemOnMouse())
@@ -120,6 +123,8 @@ public class GuiInventory extends GuiContainer
 		
 		g.drawImage(CommunityGame.loader.getImageByName("gui.png").getSubImage(400, 0, 35, 35),(270) + selectedCase*32 -1, 397);
 		
-		drawItemName(gc, g);
+		if(isMouseOnSlot(gc) != null)
+			if(isMouseOnSlot(gc).getItem() != null)
+				drawItemName(gc, g, isMouseOnSlot(gc).getItem(), sbg);
 	}
 }
